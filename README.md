@@ -6,6 +6,7 @@ Autonomous revenue-recovery MVP for live music venues and event spaces. It scout
 
 ```bash
 npm install
+npm run migrate
 npm run audit -- --url "https://www.theindependentsf.com/"
 npm run dashboard
 ```
@@ -17,6 +18,18 @@ From the dashboard you can now:
 - launch a single audit by venue name or URL
 - preview reconnaissance candidates for a city and venue category
 - launch a city-wide audit batch directly from the browser
+- inspect dossier timelines, contacts, outreach threads, billing, and delivery state
+
+## Environment
+
+Copy `.env.example` to `.env` and fill in whichever providers you want to activate.
+
+Groups:
+
+- automation thresholds
+- SMTP sending
+- IMAP reply polling
+- Stripe Checkout
 
 ## Architecture
 
@@ -29,6 +42,9 @@ The MVP uses a simple multi-agent pipeline:
 - `Analyst`: estimates inquiry/event uplift and pricing options with transparent assumptions.
 - `Closer`: writes a personalized outreach email and DM variant from the audit and generated fixes.
 - `Dashboard`: local Express app that reads `./out/` and presents reports, impact, outreach, and downloadable assets.
+- `SQLite backend`: `data/autonomous_fixer.sqlite` stores venues, profiles, audit runs, contacts, jobs, stage events, outreach threads, offers, checkouts, and deliveries.
+- `Dossier layer`: every venue gets a DB-backed stage ledger plus `out/{venue_slug}/dossier.md`.
+- `Automation services`: SMTP outreach, IMAP reply polling, Stripe Checkout, and delivery packaging/portal.
 
 ## File tree
 
@@ -77,6 +93,7 @@ The MVP uses a simple multi-agent pipeline:
 ```bash
 npm run audit -- --city "San Francisco" --category "music venue"
 npm run audit -- --url "https://bottomofthehill.com/"
+npm run audit -- --name "Bottom of the Hill" --city "San Francisco"
 ```
 
 Outputs are written to `./out/{venue_slug}/`.

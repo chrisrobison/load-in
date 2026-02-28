@@ -1,4 +1,16 @@
 {
+  "venue": {
+    "id": "ven_vdmad8iuo8za",
+    "slug": "the-independent",
+    "name": "The Independent",
+    "canonicalUrl": "https://www.theindependentsf.com/",
+    "city": "San Francisco",
+    "category": null,
+    "status": "audited",
+    "createdAt": "2026-02-28T10:49:07.084Z",
+    "updatedAt": "2026-02-28T10:51:50.830Z"
+  },
+  "auditRunId": "aud_4mn9p73xm0vo",
   "audit": {
     "venue": {
       "name": "The Independent",
@@ -6,7 +18,6 @@
       "url": "https://www.theindependentsf.com/",
       "finalUrl": "https://www.theindependentsf.com/",
       "city": "San Francisco",
-      "category": "music venue",
       "title": "The Independent | Live Music in San Francisco, California | Home",
       "metaDescription": "Upcoming events at The Independent in San Francisco, California. Get tickets to upcoming events and find out who's playing.",
       "h1": "Upcoming Shows",
@@ -21,10 +32,10 @@
       "hasArtistSubmission": true,
       "hasNewsletter": true,
       "hasEventSchema": true,
-      "imageCount": 111,
+      "imageCount": 110,
       "totalImageBytes": 245150,
-      "estimatedPageWeight": 683558,
-      "wordCount": 3860,
+      "estimatedPageWeight": 679263,
+      "wordCount": 3842,
       "genres": [
         "indie",
         "comedy",
@@ -36,7 +47,7 @@
         {
           "title": "Upcoming Shows twSendEvent({'twView':'list2','event':'twView'}); /* Custom Style",
           "dateText": "11/7",
-          "link": "https://www.theindependentsf.com/tm-event/weval-chorophobia-album-release-tour/"
+          "link": "https://www.theindependentsf.com/tm-event/bob-schneider/"
         }
       ],
       "rawTextSample": "X jQuery(document).ready(function() { // Functionality that controls hiding/showing the email signup lightbox // Check to see if cookie is set prior to showing email signup after 5 second delay if( Cookies.get('noti') !== 'closed' ) { jQuery('.email-popup-container').delay(5000).fadeIn(); } // If user closes lightbox set cookie for 30 days to not show again jQuery('.nothanks').click(function() { Cookies.set('noti', 'closed', { expires: 30 }); jQuery('.email-popup-container').fadeOut(); }); // If user closes lightbox with X sets cookie and doesn't hide jQuery('#popup-close').click(function() { Cookies.set('noti', 'closed', { expires: 30 }); jQuery('.email-popup-container').fadeOut(); }); // Hides the email submit form 3 seconds after a successful submission and sets 1 year cookie to disabl…",
@@ -69,7 +80,7 @@
         "severity": 9,
         "whyItMatters": "Slow pages depress ticket clicks and booking inquiries, especially on mobile.",
         "fix": "Compress hero media, lazy-load secondary images, and reduce oversized assets.",
-        "evidence": "Estimated page weight 668 KB with 111 images."
+        "evidence": "Estimated page weight 663 KB with 110 images."
       }
     ],
     "topLeaks": [
@@ -89,7 +100,7 @@
         "severity": 9,
         "whyItMatters": "Slow pages depress ticket clicks and booking inquiries, especially on mobile.",
         "fix": "Compress hero media, lazy-load secondary images, and reduce oversized assets.",
-        "evidence": "Estimated page weight 668 KB with 111 images."
+        "evidence": "Estimated page weight 663 KB with 110 images."
       }
     ]
   },
@@ -144,5 +155,58 @@
       }
     ],
     "reportPath": "/Users/cdr/Projects/load-in/out/the-independent/report.md"
-  }
+  },
+  "qualification": {
+    "qualified": true,
+    "autoSendEligible": false,
+    "reason": "qualified_manual_or_env_gate",
+    "rationale": [
+      "Score 79 meets the qualification threshold of 55.",
+      "Top leak severity 12 meets the minimum severity threshold of 10.",
+      "Primary contact https://www.facebook.com/theindependentsf has confidence 0.75."
+    ],
+    "scoreThreshold": 55,
+    "minLeakSeverity": 10
+  },
+  "contacts": [
+    {
+      "id": "con_u3ogszwupv0x",
+      "venueId": "ven_vdmad8iuo8za",
+      "kind": "contact_form",
+      "value": "https://www.facebook.com/theindependentsf",
+      "source": "https://www.theindependentsf.com/",
+      "roleHint": "booking",
+      "confidence": 0.75,
+      "isPrimary": true,
+      "status": "active",
+      "createdAt": "2026-02-28T10:51:50.948Z",
+      "updatedAt": "2026-02-28T10:51:50.948Z"
+    },
+    {
+      "id": "con_i731qsfa8fao",
+      "venueId": "ven_vdmad8iuo8za",
+      "kind": "contact_form",
+      "value": "https://www.theindependentsf.com/contact/",
+      "source": "https://www.theindependentsf.com/",
+      "roleHint": "general",
+      "confidence": 0.7,
+      "isPrimary": false,
+      "status": "active",
+      "createdAt": "2026-02-28T10:51:50.948Z",
+      "updatedAt": "2026-02-28T10:51:50.948Z"
+    },
+    {
+      "id": "con_pzehnctqc1aq",
+      "venueId": "ven_vdmad8iuo8za",
+      "kind": "phone",
+      "value": "415.771.1421",
+      "source": "audit_profile",
+      "roleHint": "front-desk",
+      "confidence": 0.5,
+      "isPrimary": false,
+      "status": "active",
+      "createdAt": "2026-02-28T10:51:50.948Z",
+      "updatedAt": "2026-02-28T10:51:50.948Z"
+    }
+  ]
 }

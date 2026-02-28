@@ -1,15 +1,15 @@
-import type { AnalysisResult, AuditResult, BuildResult, OutreachResult } from "../types.js";
+import type { AnalysisResult, AuditResult, BuildResult, OutreachDraft } from "../types.js";
 
 export class Closer {
-  run(audit: AuditResult, analysis: AnalysisResult, build: BuildResult): OutreachResult {
+  run(audit: AuditResult, analysis: AnalysisResult, build: BuildResult): OutreachDraft {
     const observations = [
       audit.topLeaks[0] ? `I noticed ${audit.topLeaks[0].title.toLowerCase()} on ${audit.venue.finalUrl}.` : undefined,
       audit.topLeaks[1] ? `I also saw ${audit.topLeaks[1].title.toLowerCase()}, which is likely costing direct bookings.` : undefined
     ].filter(Boolean) as string[];
 
     const assetList = build.fixAssets.slice(0, 3).map((asset) => asset.type).join(", ");
+    const subject = `Quick revenue fixes I already mocked up for ${audit.venue.name}`;
     const email = [
-      `Subject: Quick revenue fixes I already mocked up for ${audit.venue.name}`,
       "",
       `Hi ${audit.venue.name} team,`,
       "",
@@ -25,7 +25,9 @@ export class Closer {
       "",
       "If it helps, I can send over the booking page link and a screenshot so you can see the fixes before deciding.",
       "",
-      "Want me to send the booking page link and a screenshot?"
+      "Want me to send the booking page link and a screenshot?",
+      "",
+      "If you'd prefer not to hear from me again, reply with unsubscribe."
     ].join("\n");
 
     const dm = [
@@ -34,6 +36,11 @@ export class Closer {
       "Want me to send the booking page link and a screenshot?"
     ].join(" ");
 
-    return { email, dm };
+    const emailHtml = email
+      .split("\n")
+      .map((line) => line.length > 0 ? `<p>${line}</p>` : "<br>")
+      .join("");
+
+    return { subject, email, emailHtml, dm };
   }
 }

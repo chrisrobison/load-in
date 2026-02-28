@@ -1,4 +1,16 @@
 {
+  "venue": {
+    "id": "ven_h2wqlwu692kk",
+    "slug": "bottom-of-the-hill",
+    "name": "Bottom of the Hill",
+    "canonicalUrl": "https://bottomofthehill.com/",
+    "city": "San Francisco",
+    "category": "music venue",
+    "status": "audited",
+    "createdAt": "2026-02-28T10:50:19.469Z",
+    "updatedAt": "2026-02-28T10:50:19.469Z"
+  },
+  "auditRunId": "aud_hlkeyrifehup",
   "audit": {
     "venue": {
       "name": "Bottom of the Hill",
@@ -216,5 +228,18 @@
       }
     ],
     "reportPath": "/Users/cdr/Projects/load-in/out/bottom-of-the-hill/report.md"
-  }
+  },
+  "qualification": {
+    "qualified": false,
+    "autoSendEligible": false,
+    "reason": "disqualified",
+    "rationale": [
+      "Score 15 is below the qualification threshold of 55.",
+      "Top leak severity 18 meets the minimum severity threshold of 10.",
+      "No non-phone contact was found."
+    ],
+    "scoreThreshold": 55,
+    "minLeakSeverity": 10
+  },
+  "contacts": []
 }

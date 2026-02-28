@@ -123,6 +123,17 @@ button {
   margin-top: 12px;
 }
 
+.stack-block p {
+  margin: 8px 0;
+}
+
+.panel-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
 .job-card {
   border: 1px solid var(--line);
   border-radius: 18px;
@@ -226,6 +237,21 @@ button {
 
 .list li {
   margin-bottom: 10px;
+}
+
+.timeline {
+  list-style: none;
+  padding-left: 0;
+  margin: 14px 0 0;
+}
+
+.timeline li {
+  padding: 12px 0;
+  border-bottom: 1px solid var(--line);
+}
+
+.timeline li:last-child {
+  border-bottom: 0;
 }
 
 .pre {

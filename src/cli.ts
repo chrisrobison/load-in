@@ -3,6 +3,7 @@ import { Pipeline } from "./pipeline.js";
 interface ParsedArgs {
   city?: string;
   category?: string;
+  name?: string;
   url?: string;
   limit?: number;
 }
@@ -21,6 +22,9 @@ function parseArgs(argv: string[]): ParsedArgs {
     } else if (current === "--url" && next) {
       args.url = next;
       index += 1;
+    } else if (current === "--name" && next) {
+      args.name = next;
+      index += 1;
     } else if (current === "--limit" && next) {
       args.limit = Number(next);
       index += 1;
@@ -31,8 +35,8 @@ function parseArgs(argv: string[]): ParsedArgs {
 
 async function main(): Promise<void> {
   const args = parseArgs(process.argv.slice(2));
-  if (!args.url && !args.city) {
-    throw new Error("Provide either --url or --city with --category.");
+  if (!args.url && !args.city && !args.name) {
+    throw new Error("Provide either --url, --name, or --city with --category.");
   }
 
   const pipeline = new Pipeline();

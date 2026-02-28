@@ -6,9 +6,10 @@ const reconResultsEl = document.getElementById("recon-results");
 const singleAuditForm = document.getElementById("single-audit-form");
 const cityAuditForm = document.getElementById("city-audit-form");
 const previewReconButton = document.getElementById("preview-recon");
+const sendThreadButton = document.getElementById("send-thread-button");
 
-let venuesCache = [];
 let activeJobPoll = null;
+let currentVenue = null;
 
 async function fetchJson(url, options) {
   const response = await fetch(url, options);
@@ -30,81 +31,120 @@ function setStatus(container, message, variant = "muted") {
   container.textContent = message;
 }
 
+function setText(id, value) {
+  document.getElementById(id).textContent = value || "";
+}
+
 function renderVenueList(venues) {
-  venuesCache = venues;
   venueListEl.innerHTML = "";
   venues.forEach((venue) => {
     const button = document.createElement("button");
     button.className = "venue-card";
     button.innerHTML = `
       <strong>${venue.name}</strong>
-      <p>Score ${venue.score}</p>
-      <p>${venue.topLeaks.join(" • ")}</p>
+      <p>${venue.city || "Unknown city"} • ${venue.status}</p>
+      <p>Score ${venue.score ?? "N/A"}</p>
+      <p>${venue.topLeaks.join(" • ") || "No leak data yet"}</p>
     `;
     button.addEventListener("click", async () => {
       document.querySelectorAll(".venue-card").forEach((el) => el.classList.remove("active"));
       button.classList.add("active");
-      await renderVenueDetail(venue.slug);
+      await renderVenueDetail(venue.id);
     });
     venueListEl.appendChild(button);
   });
 }
 
-function setText(id, value) {
-  document.getElementById(id).textContent = value;
-}
-
-async function loadVenues(preferredSlug) {
+async function loadVenues(preferredId) {
   const venues = await fetchJson("/api/venues");
   if (venues.length === 0) {
-    venueListEl.innerHTML = "<p>No outputs yet. Launch an audit from the left.</p>";
+    venueListEl.innerHTML = "<p>No persisted venues yet. Launch an audit from the left.</p>";
     return;
   }
 
   renderVenueList(venues);
-  const target = preferredSlug ? venues.find((venue) => venue.slug === preferredSlug) : venues[0];
+  const target = preferredId ? venues.find((venue) => venue.id === preferredId) : venues[0];
   if (target) {
-    await renderVenueDetail(target.slug);
+    await renderVenueDetail(target.id);
     document.querySelectorAll(".venue-card").forEach((el) => el.classList.remove("active"));
-    const activeIndex = venues.findIndex((venue) => venue.slug === target.slug);
+    const activeIndex = venues.findIndex((venue) => venue.id === target.id);
     document.querySelectorAll(".venue-card")[activeIndex]?.classList.add("active");
   }
 }
 
-async function renderVenueDetail(slug) {
-  const data = await fetchJson(`/api/venues/${slug}`);
+function renderList(id, items, formatter) {
+  const el = document.getElementById(id);
+  el.innerHTML = "";
+  if (!items || items.length === 0) {
+    el.innerHTML = "<li class=\"muted\">None</li>";
+    return;
+  }
+  items.forEach((item) => {
+    const li = document.createElement("li");
+    li.innerHTML = formatter(item);
+    el.appendChild(li);
+  });
+}
+
+async function renderVenueDetail(id) {
+  const data = await fetchJson(`/api/venues/${id}`);
+  currentVenue = data;
   emptyStateEl.classList.add("hidden");
   detailEl.classList.remove("hidden");
 
-  setText("venue-url", data.audit.venue.finalUrl || data.audit.venue.url || "Public site");
-  setText("venue-name", data.audit.venue.name);
-  setText("venue-score", String(data.audit.score));
-  setText("report", data.report);
-  setText("email", data.outreach.email);
-  setText("dm", data.outreach.dm);
+  setText("venue-url", data.profile?.finalUrl || data.venue.canonicalUrl || "Public site");
+  setText("venue-name", data.venue.name);
+  setText("venue-status", `Status: ${data.venue.status}`);
+  setText("venue-score", String(data.audit?.score ?? "N/A"));
+  setText("report", data.report || "No report generated yet.");
+  setText("email", data.outreach?.email || "No outreach email generated yet.");
+  setText("dm", data.outreach?.dm || "No DM generated yet.");
 
-  const topLeaks = document.getElementById("top-leaks");
-  topLeaks.innerHTML = "";
-  data.audit.topLeaks.slice(0, 5).forEach((leak) => {
-    const item = document.createElement("li");
-    item.textContent = `${leak.title}: ${leak.fix}`;
-    topLeaks.appendChild(item);
-  });
+  renderList("top-leaks", data.audit?.topLeaks || [], (leak) => `${leak.title}: ${leak.fix}`);
+  const qualification = document.getElementById("qualification");
+  qualification.innerHTML = data.qualification
+    ? `
+      <p><strong>${data.qualification.reason}</strong></p>
+      <ul class="list">${(data.qualification.rationale || []).map((item) => `<li>${item}</li>`).join("")}</ul>
+    `
+    : "<p class=\"muted\">No qualification decision recorded yet.</p>";
 
   const impact = document.getElementById("impact");
-  impact.innerHTML = `
-    <p><strong>${data.analysis.impact.inquiriesPerMonth}</strong></p>
-    <p><strong>${data.analysis.impact.eventsPerMonth}</strong></p>
-    <ul class="list">${data.analysis.impact.assumptions.map((item) => `<li>${item}</li>`).join("")}</ul>
-  `;
+  impact.innerHTML = data.analysis
+    ? `
+      <p><strong>${data.analysis.impact.inquiriesPerMonth}</strong></p>
+      <p><strong>${data.analysis.impact.eventsPerMonth}</strong></p>
+      <ul class="list">${data.analysis.impact.assumptions.map((item) => `<li>${item}</li>`).join("")}</ul>
+    `
+    : "<p class=\"muted\">No analysis yet.</p>";
 
-  const fixFiles = document.getElementById("fix-files");
-  fixFiles.innerHTML = "";
-  data.fixFiles.forEach((file) => {
-    const item = document.createElement("li");
-    item.innerHTML = `<a href="${file.url}" target="_blank" rel="noreferrer">${file.name}</a>`;
-    fixFiles.appendChild(item);
-  });
+  renderList("contacts", data.contacts || [], (contact) =>
+    `${contact.kind}: ${contact.value}<br><span class="muted">${contact.roleHint || "unknown"} • confidence ${contact.confidence.toFixed(2)}</span>`
+  );
+  renderList("threads", data.threads || [], (thread) =>
+    `<strong>${thread.status}</strong><br><span class="muted">${thread.subject || "No subject"}</span>`
+  );
+  renderList("fix-files", data.assets || [], (asset) =>
+    asset.url ? `<a href="${asset.url}" target="_blank" rel="noreferrer">${asset.type}</a>` : asset.type
+  );
+  renderList("timeline", data.stageEvents || [], (event) =>
+    `<strong>${event.stage}</strong> • ${event.eventType}${event.decision ? ` • ${event.decision}` : ""}<br><span class="muted">${event.createdAt}</span>`
+  );
+
+  const billing = document.getElementById("billing");
+  const checkoutItems = (data.checkouts || []).map((checkout) =>
+    `<li>${checkout.status}${checkout.checkoutUrl ? ` • <a href="${checkout.checkoutUrl}" target="_blank" rel="noreferrer">checkout</a>` : ""}</li>`
+  ).join("");
+  const deliveryItems = (data.deliveries || []).map((delivery) =>
+    `<li>${delivery.status}${delivery.deliveryUrl ? ` • <a href="${delivery.deliveryUrl}" target="_blank" rel="noreferrer">portal</a>` : ""}</li>`
+  ).join("");
+  billing.innerHTML = `
+    <p><strong>Offers:</strong> ${(data.offers || []).length}</p>
+    <p><strong>Checkouts:</strong></p>
+    <ul class="list">${checkoutItems || "<li class=\"muted\">None</li>"}</ul>
+    <p><strong>Deliveries:</strong></p>
+    <ul class="list">${deliveryItems || "<li class=\"muted\">None</li>"}</ul>
+  `;
 }
 
 function renderReconResults(payload) {
@@ -127,7 +167,8 @@ function renderJobs(jobs) {
   }
 
   jobStatusEl.className = "";
-  jobStatusEl.innerHTML = jobs.slice(0, 5).map((job) => {
+  jobStatusEl.innerHTML = jobs.slice(0, 6).map((job) => {
+    const stage = job.result?.stage ? ` • ${job.result.stage}` : "";
     const resultSummary = job.result?.venues?.length
       ? `${job.result.venues.length} venues written`
       : job.result?.candidateCount
@@ -136,7 +177,7 @@ function renderJobs(jobs) {
     return `
       <div class="job-card ${job.status}">
         <strong>${job.label}</strong>
-        <p>${job.kind} • ${job.status}</p>
+        <p>${job.kind} • ${job.status}${stage}</p>
         <p>${resultSummary || job.error || "Working..."}</p>
       </div>
     `;
@@ -161,8 +202,8 @@ function startPollingJob(jobId) {
       if (job.status === "completed" || job.status === "failed") {
         clearInterval(activeJobPoll);
         activeJobPoll = null;
-        const preferredSlug = job.result?.venues?.[0]?.slug;
-        await loadVenues(preferredSlug);
+        const preferredId = job.result?.venues?.[0]?.id;
+        await loadVenues(preferredId);
         if (job.status === "failed") {
           setStatus(jobStatusEl, job.error || "Audit job failed.", "error");
         }
@@ -229,6 +270,25 @@ cityAuditForm.addEventListener("submit", async (event) => {
     });
     await refreshJobs();
     startPollingJob(job.id);
+  } catch (error) {
+    setStatus(jobStatusEl, error.message, "error");
+  }
+});
+
+sendThreadButton.addEventListener("click", async () => {
+  const thread = currentVenue?.threads?.find((item) => item.status === "drafted" || item.status === "queued");
+  if (!thread) {
+    setStatus(jobStatusEl, "No draft thread available for this venue.", "error");
+    return;
+  }
+  try {
+    await fetchJson("/api/outreach/send", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ threadId: thread.id })
+    });
+    await renderVenueDetail(currentVenue.venue.id);
+    await refreshJobs();
   } catch (error) {
     setStatus(jobStatusEl, error.message, "error");
   }
