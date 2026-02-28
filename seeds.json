@@ -1,0 +1,50 @@
+[
+  {
+    "name": "The Independent",
+    "city": "San Francisco",
+    "category": "music venue",
+    "url": "https://www.theindependentsf.com/"
+  },
+  {
+    "name": "Bottom of the Hill",
+    "city": "San Francisco",
+    "category": "music venue",
+    "url": "https://bottomofthehill.com/"
+  },
+  {
+    "name": "Rickshaw Stop",
+    "city": "San Francisco",
+    "category": "music venue",
+    "url": "https://rickshawstop.com/"
+  },
+  {
+    "name": "The Chapel",
+    "city": "San Francisco",
+    "category": "music venue",
+    "url": "https://thechapelsf.com/"
+  },
+  {
+    "name": "Neck of the Woods",
+    "city": "San Francisco",
+    "category": "music venue",
+    "url": "https://www.neckofthewoodssf.com/"
+  },
+  {
+    "name": "Mohawk Austin",
+    "city": "Austin",
+    "category": "music venue",
+    "url": "https://mohawkaustin.com/"
+  },
+  {
+    "name": "The Crocodile",
+    "city": "Seattle",
+    "category": "music venue",
+    "url": "https://www.thecrocodile.com/"
+  },
+  {
+    "name": "Metro Chicago",
+    "city": "Chicago",
+    "category": "music venue",
+    "url": "https://metrochicago.com/"
+  }
+]

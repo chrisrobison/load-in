@@ -1,0 +1,65 @@
+{
+  "note": "Stub outreach list for MVP. Replace with local booking research or API-backed enrichment.",
+  "entries": [
+    {
+      "name": "INDIE lead 1",
+      "type": "band",
+      "fitReason": "Genre inferred from site text: indie.",
+      "contactStub": "research-indie-1@example.com"
+    },
+    {
+      "name": "METAL lead 2",
+      "type": "promoter",
+      "fitReason": "Genre inferred from site text: metal.",
+      "contactStub": "research-metal-2@example.com"
+    },
+    {
+      "name": "ROCK lead 3",
+      "type": "band",
+      "fitReason": "Genre inferred from site text: rock.",
+      "contactStub": "research-rock-3@example.com"
+    },
+    {
+      "name": "ELECTRONIC lead 4",
+      "type": "promoter",
+      "fitReason": "Genre inferred from site text: electronic.",
+      "contactStub": "research-electronic-4@example.com"
+    },
+    {
+      "name": "INDIE lead 5",
+      "type": "band",
+      "fitReason": "Genre inferred from site text: indie.",
+      "contactStub": "research-indie-5@example.com"
+    },
+    {
+      "name": "METAL lead 6",
+      "type": "promoter",
+      "fitReason": "Genre inferred from site text: metal.",
+      "contactStub": "research-metal-6@example.com"
+    },
+    {
+      "name": "ROCK lead 7",
+      "type": "band",
+      "fitReason": "Genre inferred from site text: rock.",
+      "contactStub": "research-rock-7@example.com"
+    },
+    {
+      "name": "ELECTRONIC lead 8",
+      "type": "promoter",
+      "fitReason": "Genre inferred from site text: electronic.",
+      "contactStub": "research-electronic-8@example.com"
+    },
+    {
+      "name": "INDIE lead 9",
+      "type": "band",
+      "fitReason": "Genre inferred from site text: indie.",
+      "contactStub": "research-indie-9@example.com"
+    },
+    {
+      "name": "METAL lead 10",
+      "type": "promoter",
+      "fitReason": "Genre inferred from site text: metal.",
+      "contactStub": "research-metal-10@example.com"
+    }
+  ]
+}

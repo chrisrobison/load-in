@@ -1,0 +1,18 @@
+Subject: Quick revenue fixes I already mocked up for Bottom of the Hill
+
+Hi Bottom of the Hill team,
+
+I ran a public-site audit on https://bottomofthehill.com/ and found a few easy wins.
+I noticed no clear booking cta on https://bottomofthehill.com/.
+I also saw high inquiry friction, which is likely costing direct bookings.
+
+To make this concrete, I already created a Fix Pack for you: booking inquiry landing page, artist submission intake form, event schema snippet.
+The biggest upside is likely 4-8 additional qualified inquiries/month plus 1-2 additional events/month.
+
+Two ways to work together:
+1. Performance-based: 12% of incremental booking revenue for the first 90 days, measured against a 60-day pre-launch baseline and tagged inquiry sources.
+2. Flat setup + monthly: $1,500 setup + $350/mo for hosting, optimization, reporting, and monthly fix iterations.
+
+If it helps, I can send over the booking page link and a screenshot so you can see the fixes before deciding.
+
+Want me to send the booking page link and a screenshot?

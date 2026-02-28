@@ -1,0 +1,19 @@
+{
+  "instructions": "No reliable event listing was detected, so this is a template. Replace placeholder values and embed on event pages as JSON-LD.",
+  "@context": "https://schema.org",
+  "@type": "Event",
+  "name": "Sample Event Name",
+  "startDate": "2026-06-01T20:00:00-07:00",
+  "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+  "eventStatus": "https://schema.org/EventScheduled",
+  "location": {
+    "@type": "Place",
+    "name": "San Francisco",
+    "address": "Venue address"
+  },
+  "offers": {
+    "@type": "Offer",
+    "url": "https://duckduckgo.com/y.js?ad_domain=tickets-center.com&ad_provider=bingv7aa&ad_type=txad&click_metadata=Sw--WpIlwuqGosF0sd_X0zeaH88HjK-i9JoktbBnpayuaHXhAsxeJb1mq48GCkDVIQuQVuBpnf38rs4SSYyALyj6_Z37wDj7kjbbTGpVSoNGftZq7lTg-E1oLByW30_hf-IgpH1gkwDUivL170MAdzUH-yiyY-X0Cq3TokVl57A.30qFbYKUURSLY1urVTl_Aw&rut=6d17ef141cb0a2a5f16f5698deeb4a9c2afd2366e78e261f0a9e929bc688c4fe&u3=https://www.bing.com/aclick?ld=e8f-VSyx0oja08-WMmC_akWTVUCUyNnaajQq6FwpyC_STkHMFWxEF3AHmjxy1UXoA6DdUJLfBltGA9SdT-Y5JLZ_VqHTtbmhxYCoMjoEB5UWR0h3T6379EU0RcM2cKiYuQ_UpkH65u3d_14xdhvu2oVwIMrIm8GtxOHWjMaKJH4yVz1n6UD6HK0AURcopJSspdWnHbeo6dUXIBt2ha9XS5XCQdDs0&u=aHR0cHMlM2ElMmYlMmZ0aWNrZXRzLWNlbnRlci5jb20lMmZmb3JiaWRkZW4tZ3JlYXQtYW1lcmljYW4tbXVzaWMtaGFsbCUzZmFjY2lkJTNkMTM4ODkwNDE5JTI2bmlkJTNkMiUyNmNhbXBhaWduaWQlM2Q1NjkyOTIwNTclMjZhZGdyb3VwaWQlM2QxMTcyMDgxNDYzNTIwMDE2JTI2Y2lkJTNkNzMyNTUzMTAzMzk1MjclMjZrd2lkJTNkNzMyNTU1NDMzNDI1NjclMjZha3dkJTNkZm9yYmlkZGVuJTI1MjBjb25jZXJ0JTI1MjB0aWNrZXRzJTI2ZG10JTNkYiUyNmJtdCUzZGJiJTI2ZGlzdCUzZHMlMjZ1cSUzZFNhbiUyNTIwRnJhbmNpc2NvJTI1MjBtdXNpYyUyNTIwdmVudWUlMjUyMG9mZmljaWFsJTI1MjBzaXRlJTI2ZGV2aWNlJTNkYyUyNm1zY2xraWQlM2Q1MTUyMGYwOGRhZWUxZTE4ZjE4NDY2YWE0ZmE1ZDhjNyUyNmxvY19waHlzaWNhbF9tcyUzZDg3Mzc5JTI2bG9jX2ludGVyZXN0X21zJTNkNDM4OTYlMjZleGlkJTNkJTI2dnglM2Qw&rlid=51520f08daee1e18f18466aa4fa5d8c7&vqd=4-96201925290310343571309764877091865376&iurl={1}IG=056238321D854FC59E8C6D35143A8C17&CID=0DF01F18FF17653530BA0816FE80641C&ID=DevEx,5039.1",
+    "availability": "https://schema.org/InStock"
+  }
+}

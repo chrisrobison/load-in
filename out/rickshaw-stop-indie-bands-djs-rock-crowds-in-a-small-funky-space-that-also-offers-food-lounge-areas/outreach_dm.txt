@@ -1,0 +1,1 @@
+Ran a quick audit on Rickshaw Stop – Indie bands & DJs rock crowds in a small, funky space that also offers food & lounge areas. and spotted missing rental and spec details. I already mocked up booking inquiry landing page, artist submission intake form, event schema snippet. Want me to send the booking page link and a screenshot?

@@ -1,0 +1,1 @@
+Ran a quick audit on San Francisco and spotted no clear booking cta. I already mocked up booking inquiry landing page, artist submission intake form, event schema snippet. Want me to send the booking page link and a screenshot?

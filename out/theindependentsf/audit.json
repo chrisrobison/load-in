@@ -1,0 +1,146 @@
+{
+  "audit": {
+    "venue": {
+      "name": "Theindependentsf",
+      "slug": "theindependentsf",
+      "url": "https://www.theindependentsf.com/",
+      "finalUrl": "https://www.theindependentsf.com/",
+      "title": "The Independent | Live Music in San Francisco, California | Home",
+      "metaDescription": "Upcoming events at The Independent in San Francisco, California. Get tickets to upcoming events and find out who's playing.",
+      "h1": "Upcoming Shows",
+      "phone": "415.771.1421",
+      "emails": [],
+      "hasForm": false,
+      "hasBookCTA": true,
+      "hasRentalInfo": false,
+      "hasCalendar": true,
+      "hasTickets": true,
+      "hasUpcomingEvents": true,
+      "hasArtistSubmission": true,
+      "hasNewsletter": true,
+      "hasEventSchema": true,
+      "imageCount": 111,
+      "totalImageBytes": 245150,
+      "estimatedPageWeight": 683558,
+      "wordCount": 3860,
+      "genres": [
+        "indie",
+        "comedy",
+        "folk",
+        "rock",
+        "electronic"
+      ],
+      "eventCandidates": [
+        {
+          "title": "Upcoming Shows twSendEvent({'twView':'list2','event':'twView'}); /* Custom Style",
+          "dateText": "11/7",
+          "link": "https://www.theindependentsf.com/tm-event/weval-chorophobia-album-release-tour/"
+        }
+      ],
+      "rawTextSample": "X jQuery(document).ready(function() { // Functionality that controls hiding/showing the email signup lightbox // Check to see if cookie is set prior to showing email signup after 5 second delay if( Cookies.get('noti') !== 'closed' ) { jQuery('.email-popup-container').delay(5000).fadeIn(); } // If user closes lightbox set cookie for 30 days to not show again jQuery('.nothanks').click(function() { Cookies.set('noti', 'closed', { expires: 30 }); jQuery('.email-popup-container').fadeOut(); }); // If user closes lightbox with X sets cookie and doesn't hide jQuery('#popup-close').click(function() { Cookies.set('noti', 'closed', { expires: 30 }); jQuery('.email-popup-container').fadeOut(); }); // Hides the email submit form 3 seconds after a successful submission and sets 1 year cookie to disabl…",
+      "notes": [
+        "Fetched successfully with HTTP 200",
+        "Detected 1 possible event listings."
+      ],
+      "fetchSucceeded": true
+    },
+    "score": 79,
+    "summaryBullets": [
+      "Theindependentsf is leaking revenue first through missing rental and spec details.",
+      "The audit used live public site data from https://www.theindependentsf.com/.",
+      "The site appears to list events, but 2 other issues still limit conversions."
+    ],
+    "leaks": [
+      {
+        "key": "missing-rental-info",
+        "category": "booking_funnel",
+        "title": "Missing rental and spec details",
+        "severity": 12,
+        "whyItMatters": "Planners need capacity, room specs, and event-fit details before they reach out.",
+        "fix": "Add a concise private events section with capacity, amenities, and AV/spec highlights.",
+        "evidence": "Terms like capacity, rental, private event, or specs were not detected."
+      },
+      {
+        "key": "heavy-page",
+        "category": "conversion",
+        "title": "Page likely too heavy",
+        "severity": 9,
+        "whyItMatters": "Slow pages depress ticket clicks and booking inquiries, especially on mobile.",
+        "fix": "Compress hero media, lazy-load secondary images, and reduce oversized assets.",
+        "evidence": "Estimated page weight 668 KB with 111 images."
+      }
+    ],
+    "topLeaks": [
+      {
+        "key": "missing-rental-info",
+        "category": "booking_funnel",
+        "title": "Missing rental and spec details",
+        "severity": 12,
+        "whyItMatters": "Planners need capacity, room specs, and event-fit details before they reach out.",
+        "fix": "Add a concise private events section with capacity, amenities, and AV/spec highlights.",
+        "evidence": "Terms like capacity, rental, private event, or specs were not detected."
+      },
+      {
+        "key": "heavy-page",
+        "category": "conversion",
+        "title": "Page likely too heavy",
+        "severity": 9,
+        "whyItMatters": "Slow pages depress ticket clicks and booking inquiries, especially on mobile.",
+        "fix": "Compress hero media, lazy-load secondary images, and reduce oversized assets.",
+        "evidence": "Estimated page weight 668 KB with 111 images."
+      }
+    ]
+  },
+  "analysis": {
+    "impact": {
+      "inquiriesPerMonth": "2-5 additional qualified inquiries/month",
+      "eventsPerMonth": "1-2 additional events/month",
+      "assumptions": [
+        "Ranges assume the venue currently gets meaningful direct traffic but lacks one or more conversion-critical paths.",
+        "Inquiry uplift increases when a visible booking CTA and a low-friction form replace phone-only or buried contact flows.",
+        "Event uplift assumes promoter intake plus a visible upcoming-events surface help fill underbooked nights."
+      ]
+    },
+    "pricing": [
+      {
+        "label": "Performance-based",
+        "details": "12% of incremental booking revenue for the first 90 days, measured against a 60-day pre-launch baseline and tagged inquiry sources."
+      },
+      {
+        "label": "Flat setup + monthly",
+        "details": "$1,500 setup + $350/mo for hosting, optimization, reporting, and monthly fix iterations."
+      }
+    ]
+  },
+  "build": {
+    "outputDir": "/Users/cdr/Projects/load-in/out/theindependentsf",
+    "fixAssets": [
+      {
+        "type": "booking inquiry landing page",
+        "path": "/Users/cdr/Projects/load-in/out/theindependentsf/fix/booking_page.html",
+        "description": "Standalone booking page with a request-a-date CTA and inquiry form."
+      },
+      {
+        "type": "artist submission intake form",
+        "path": "/Users/cdr/Projects/load-in/out/theindependentsf/fix/artist_submission.html",
+        "description": "Promoter and artist intake form for filling open nights."
+      },
+      {
+        "type": "event schema snippet",
+        "path": "/Users/cdr/Projects/load-in/out/theindependentsf/fix/event_schema.json",
+        "description": "JSON-LD event schema or a reusable template."
+      },
+      {
+        "type": "SEO quick-fix bundle",
+        "path": "/Users/cdr/Projects/load-in/out/theindependentsf/fix/seo_suggestions.json",
+        "description": "Suggested title, meta description, H1, and OpenGraph tags."
+      },
+      {
+        "type": "fill-the-night outreach list",
+        "path": "/Users/cdr/Projects/load-in/out/theindependentsf/fix/fill_the_night_outreach_list.json",
+        "description": "Stub list of local promoter and artist targets inferred from genre signals."
+      }
+    ],
+    "reportPath": "/Users/cdr/Projects/load-in/out/theindependentsf/report.md"
+  }
+}

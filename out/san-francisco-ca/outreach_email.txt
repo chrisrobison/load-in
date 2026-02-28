@@ -1,0 +1,18 @@
+Subject: Quick revenue fixes I already mocked up for San Francisco, CA
+
+Hi San Francisco, CA team,
+
+I ran a public-site audit on https://duckduckgo.com/y.js?ad_domain=ticketsales.com&ad_provider=bingv7aa&ad_type=txad&click_metadata=R-ZyZdGowEoQ6d38OoMNfoDOZ544oRkn4m3jtIwE8PKsJzFADbZUdIdN_qXd141byfnyVMbM2VItX_lNaGeyIJKjeL4RA62eNBWR9HB80zYDX2kQviAYLyIDQUMDjq5m9_MVXMQ7y27MO6F_wCCs3740dFaQvHtRGOSfRYDwF1E.6FlxqYK-gfzIQpVnHQ6EMA&rut=2e8af0c5208de3c13145705eb356c1406734ad2e11eb0fc89c489bf1d34c1537&u3=https://www.bing.com/aclick?ld=e8tR1yo8l_wvi53IptQR4_FzVUCUxDLZ7ScHKSxSh7i4CEAXEGyWFfaUGx3RdfZUFchTpVE7f5LIkZCwdbZJxV2998kjWQBOJ_ZbYpytqcYGYVX-qds6GPowWy4VfgdxG95eKideF5kQ3sRxnNEvN7qngsm5d3B6YbjDclGYebYKNcDY6ZctTGuwZIWIyzRIFb1CVg2krzy4Vkp7efrtLdbAcDyRo&u=aHR0cHMlM2ElMmYlMmZ3d3cudGlja2V0c2FsZXMuY29tJTJmZGF2aWVzLXN5bXBob255LWhhbGwtdGlja2V0cyUyZnZlbnVlJTNmdXRtX3NvdXJjZSUzZGJpbmclMjZ1dG1fbWVkaXVtJTNkY3BjJTI2dXRtX2NhbXBhaWduJTNkNDM4MzM1MzA2JTI2dXRtX25ldHdvcmslM2RzJTI2bXNjbGtpZCUzZDBjNTc4MjVkNjg4ZDE2MTRiNWQzZWJmZmZkYzYwOWJj&rlid=0c57825d688d1614b5d3ebfffdc609bc&vqd=4-35359583017048115261005405810903348509&iurl={1}IG=056238321D854FC59E8C6D35143A8C17&CID=0DF01F18FF17653530BA0816FE80641C&ID=DevEx,5044.1 and found a few easy wins.
+I noticed no clear booking cta on https://duckduckgo.com/y.js?ad_domain=ticketsales.com&ad_provider=bingv7aa&ad_type=txad&click_metadata=R-ZyZdGowEoQ6d38OoMNfoDOZ544oRkn4m3jtIwE8PKsJzFADbZUdIdN_qXd141byfnyVMbM2VItX_lNaGeyIJKjeL4RA62eNBWR9HB80zYDX2kQviAYLyIDQUMDjq5m9_MVXMQ7y27MO6F_wCCs3740dFaQvHtRGOSfRYDwF1E.6FlxqYK-gfzIQpVnHQ6EMA&rut=2e8af0c5208de3c13145705eb356c1406734ad2e11eb0fc89c489bf1d34c1537&u3=https://www.bing.com/aclick?ld=e8tR1yo8l_wvi53IptQR4_FzVUCUxDLZ7ScHKSxSh7i4CEAXEGyWFfaUGx3RdfZUFchTpVE7f5LIkZCwdbZJxV2998kjWQBOJ_ZbYpytqcYGYVX-qds6GPowWy4VfgdxG95eKideF5kQ3sRxnNEvN7qngsm5d3B6YbjDclGYebYKNcDY6ZctTGuwZIWIyzRIFb1CVg2krzy4Vkp7efrtLdbAcDyRo&u=aHR0cHMlM2ElMmYlMmZ3d3cudGlja2V0c2FsZXMuY29tJTJmZGF2aWVzLXN5bXBob255LWhhbGwtdGlja2V0cyUyZnZlbnVlJTNmdXRtX3NvdXJjZSUzZGJpbmclMjZ1dG1fbWVkaXVtJTNkY3BjJTI2dXRtX2NhbXBhaWduJTNkNDM4MzM1MzA2JTI2dXRtX25ldHdvcmslM2RzJTI2bXNjbGtpZCUzZDBjNTc4MjVkNjg4ZDE2MTRiNWQzZWJmZmZkYzYwOWJj&rlid=0c57825d688d1614b5d3ebfffdc609bc&vqd=4-35359583017048115261005405810903348509&iurl={1}IG=056238321D854FC59E8C6D35143A8C17&CID=0DF01F18FF17653530BA0816FE80641C&ID=DevEx,5044.1.
+I also saw high inquiry friction, which is likely costing direct bookings.
+
+To make this concrete, I already created a Fix Pack for you: booking inquiry landing page, artist submission intake form, event schema snippet.
+The biggest upside is likely 4-8 additional qualified inquiries/month plus 2-4 additional events/month.
+
+Two ways to work together:
+1. Performance-based: 12% of incremental booking revenue for the first 90 days, measured against a 60-day pre-launch baseline and tagged inquiry sources.
+2. Flat setup + monthly: $1,500 setup + $350/mo for hosting, optimization, reporting, and monthly fix iterations.
+
+If it helps, I can send over the booking page link and a screenshot so you can see the fixes before deciding.
+
+Want me to send the booking page link and a screenshot?

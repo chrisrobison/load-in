@@ -1,0 +1,114 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Autonomous Fixer Ops Dashboard</title>
+  <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+  <div class="shell">
+    <aside class="sidebar">
+      <div>
+        <p class="eyebrow">Ops Dashboard</p>
+        <h1>Autonomous Fixer</h1>
+        <p class="intro">Launch venue audits from the browser, preview reconnaissance, and review generated fixes for live music rooms and event spaces.</p>
+      </div>
+
+      <section class="control-panel">
+        <h2>Launch single audit</h2>
+        <form id="single-audit-form" class="stack-form">
+          <label>
+            Venue name or URL
+            <input id="single-query" name="query" placeholder="The Independent or https://venue.com" required>
+          </label>
+          <label>
+            Optional city
+            <input id="single-city" name="city" placeholder="San Francisco">
+          </label>
+          <button type="submit">Run venue audit</button>
+        </form>
+      </section>
+
+      <section class="control-panel">
+        <h2>Reconnaissance</h2>
+        <form id="city-audit-form" class="stack-form">
+          <label>
+            City
+            <input id="city-name" name="city" placeholder="Austin" required>
+          </label>
+          <label>
+            Venue category
+            <input id="city-category" name="category" value="music venue" required>
+          </label>
+          <label>
+            Limit
+            <input id="city-limit" name="limit" type="number" min="1" max="20" value="5">
+          </label>
+          <div class="button-row">
+            <button type="button" id="preview-recon">Preview venues</button>
+            <button type="submit">Audit entire city</button>
+          </div>
+        </form>
+        <div id="recon-results" class="recon-results muted">No reconnaissance run yet.</div>
+      </section>
+
+      <section class="control-panel">
+        <h2>Jobs</h2>
+        <div id="job-status" class="job-status muted">No jobs launched yet.</div>
+      </section>
+
+      <section>
+        <h2 class="sidebar-heading">Audited venues</h2>
+        <div id="venue-list" class="venue-list"></div>
+      </section>
+    </aside>
+
+    <main class="main">
+      <section id="empty-state" class="empty-state">
+        <h2>No venue selected</h2>
+        <p>Launch a new audit or pick a completed venue from the left to inspect the report, fix pack, outreach copy, and estimated impact.</p>
+      </section>
+      <section id="detail" class="detail hidden">
+        <div class="detail-header">
+          <div>
+            <p class="eyebrow" id="venue-url"></p>
+            <h2 id="venue-name"></h2>
+          </div>
+          <div class="score-card">
+            <span>Audit score</span>
+            <strong id="venue-score"></strong>
+          </div>
+        </div>
+        <div class="grid">
+          <article class="panel">
+            <h3>Top leaks</h3>
+            <ul id="top-leaks" class="list"></ul>
+          </article>
+          <article class="panel">
+            <h3>Estimated impact</h3>
+            <div id="impact"></div>
+          </article>
+          <article class="panel wide">
+            <h3>Audit report</h3>
+            <pre id="report" class="pre"></pre>
+          </article>
+          <article class="panel">
+            <h3>Outreach email</h3>
+            <pre id="email" class="pre"></pre>
+          </article>
+          <article class="panel">
+            <h3>Short DM</h3>
+            <pre id="dm" class="pre"></pre>
+          </article>
+          <article class="panel">
+            <h3>Fix pack</h3>
+            <ul id="fix-files" class="list"></ul>
+          </article>
+        </div>
+      </section>
+    </main>
+  </div>
+  <script type="module" src="/app.js"></script>
+</body>
+</html>

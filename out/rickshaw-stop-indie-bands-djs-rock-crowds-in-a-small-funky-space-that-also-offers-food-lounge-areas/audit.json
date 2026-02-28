@@ -1,0 +1,177 @@
+{
+  "audit": {
+    "venue": {
+      "name": "Rickshaw Stop – Indie bands & DJs rock crowds in a small, funky space that also offers food & lounge areas.",
+      "slug": "rickshaw-stop-indie-bands-djs-rock-crowds-in-a-small-funky-space-that-also-offers-food-lounge-areas",
+      "url": "https://rickshawstop.com/",
+      "finalUrl": "https://rickshawstop.com/",
+      "city": "San Francisco",
+      "category": "music venue",
+      "title": "Rickshaw Stop – Indie bands & DJs rock crowds in a small, funky space that also offers food & lounge areas.",
+      "h1": "Home",
+      "address": "155 Fell Street @ Van Ness Facebook Instagram X TikTok Search Join our mailing list Thanks for",
+      "phone": "(415) 861-2011",
+      "emails": [],
+      "hasForm": true,
+      "hasBookCTA": true,
+      "hasRentalInfo": false,
+      "hasCalendar": true,
+      "hasTickets": true,
+      "hasUpcomingEvents": true,
+      "hasArtistSubmission": true,
+      "hasNewsletter": true,
+      "hasEventSchema": false,
+      "imageCount": 29,
+      "totalImageBytes": 36288,
+      "estimatedPageWeight": 218809,
+      "wordCount": 1158,
+      "genres": [
+        "indie",
+        "metal",
+        "rock",
+        "electronic"
+      ],
+      "eventCandidates": [],
+      "rawTextSample": "Home Calendar About Contact #pojo-a11y-toolbar .pojo-a11y-toolbar-toggle a{ background-color: #ffffff; color: #121212;} #pojo-a11y-toolbar .pojo-a11y-toolbar-overlay, #pojo-a11y-toolbar .pojo-a11y-toolbar-overlay ul.pojo-a11y-toolbar-items.pojo-a11y-links{ border-color: #ffffff;} body.pojo-a11y-focusable a:focus{ outline-style: solid !important; outline-width: 1px !important; outline-color: #ffffff !important;} #pojo-a11y-toolbar{ top: 120px !important;} #pojo-a11y-toolbar .pojo-a11y-toolbar-overlay{ background-color: #121212;} #pojo-a11y-toolbar .pojo-a11y-toolbar-overlay ul.pojo-a11y-toolbar-items li.pojo-a11y-toolbar-item a, #pojo-a11y-toolbar .pojo-a11y-toolbar-overlay p.pojo-a11y-toolbar-title{ color: #ffffff;} #pojo-a11y-toolbar .pojo-a11y-toolbar-overlay ul.pojo-a11y-toolbar-items…",
+      "notes": [
+        "Fetched successfully with HTTP 200",
+        "No clear event cards detected."
+      ],
+      "fetchSucceeded": true
+    },
+    "score": 61,
+    "summaryBullets": [
+      "Rickshaw Stop – Indie bands & DJs rock crowds in a small, funky space that also offers food & lounge areas. is leaking revenue first through missing rental and spec details.",
+      "The audit used live public site data from https://rickshawstop.com/.",
+      "There is no strong public signal for upcoming events, which likely hurts both discovery and fill rate."
+    ],
+    "leaks": [
+      {
+        "key": "missing-rental-info",
+        "category": "booking_funnel",
+        "title": "Missing rental and spec details",
+        "severity": 12,
+        "whyItMatters": "Planners need capacity, room specs, and event-fit details before they reach out.",
+        "fix": "Add a concise private events section with capacity, amenities, and AV/spec highlights.",
+        "evidence": "Terms like capacity, rental, private event, or specs were not detected."
+      },
+      {
+        "key": "weak-seo-metadata",
+        "category": "discovery",
+        "title": "Missing or weak SEO metadata",
+        "severity": 10,
+        "whyItMatters": "Search results underperform when the page title or description is generic or absent.",
+        "fix": "Ship tighter title/meta tags focused on bookings, events, and the venue's city.",
+        "evidence": "Title present: true. Meta description present: false."
+      },
+      {
+        "key": "heavy-page",
+        "category": "conversion",
+        "title": "Page likely too heavy",
+        "severity": 9,
+        "whyItMatters": "Slow pages depress ticket clicks and booking inquiries, especially on mobile.",
+        "fix": "Compress hero media, lazy-load secondary images, and reduce oversized assets.",
+        "evidence": "Estimated page weight 214 KB with 29 images."
+      },
+      {
+        "key": "missing-event-schema",
+        "category": "discovery",
+        "title": "No event schema markup detected",
+        "severity": 8,
+        "whyItMatters": "Structured event data improves search visibility and helps search engines understand upcoming shows.",
+        "fix": "Publish JSON-LD Event markup for upcoming shows or a reusable schema template.",
+        "evidence": "No JSON-LD Event schema was detected in the page source."
+      }
+    ],
+    "topLeaks": [
+      {
+        "key": "missing-rental-info",
+        "category": "booking_funnel",
+        "title": "Missing rental and spec details",
+        "severity": 12,
+        "whyItMatters": "Planners need capacity, room specs, and event-fit details before they reach out.",
+        "fix": "Add a concise private events section with capacity, amenities, and AV/spec highlights.",
+        "evidence": "Terms like capacity, rental, private event, or specs were not detected."
+      },
+      {
+        "key": "weak-seo-metadata",
+        "category": "discovery",
+        "title": "Missing or weak SEO metadata",
+        "severity": 10,
+        "whyItMatters": "Search results underperform when the page title or description is generic or absent.",
+        "fix": "Ship tighter title/meta tags focused on bookings, events, and the venue's city.",
+        "evidence": "Title present: true. Meta description present: false."
+      },
+      {
+        "key": "heavy-page",
+        "category": "conversion",
+        "title": "Page likely too heavy",
+        "severity": 9,
+        "whyItMatters": "Slow pages depress ticket clicks and booking inquiries, especially on mobile.",
+        "fix": "Compress hero media, lazy-load secondary images, and reduce oversized assets.",
+        "evidence": "Estimated page weight 214 KB with 29 images."
+      },
+      {
+        "key": "missing-event-schema",
+        "category": "discovery",
+        "title": "No event schema markup detected",
+        "severity": 8,
+        "whyItMatters": "Structured event data improves search visibility and helps search engines understand upcoming shows.",
+        "fix": "Publish JSON-LD Event markup for upcoming shows or a reusable schema template.",
+        "evidence": "No JSON-LD Event schema was detected in the page source."
+      }
+    ]
+  },
+  "analysis": {
+    "impact": {
+      "inquiriesPerMonth": "1-4 additional qualified inquiries/month",
+      "eventsPerMonth": "1-2 additional events/month",
+      "assumptions": [
+        "Ranges assume the venue currently gets meaningful direct traffic but lacks one or more conversion-critical paths.",
+        "Inquiry uplift increases when a visible booking CTA and a low-friction form replace phone-only or buried contact flows.",
+        "Event uplift assumes promoter intake plus a visible upcoming-events surface help fill underbooked nights."
+      ]
+    },
+    "pricing": [
+      {
+        "label": "Performance-based",
+        "details": "12% of incremental booking revenue for the first 90 days, measured against a 60-day pre-launch baseline and tagged inquiry sources."
+      },
+      {
+        "label": "Flat setup + monthly",
+        "details": "$1,500 setup + $350/mo for hosting, optimization, reporting, and monthly fix iterations."
+      }
+    ]
+  },
+  "build": {
+    "outputDir": "/Users/cdr/Projects/load-in/out/rickshaw-stop-indie-bands-djs-rock-crowds-in-a-small-funky-space-that-also-offers-food-lounge-areas",
+    "fixAssets": [
+      {
+        "type": "booking inquiry landing page",
+        "path": "/Users/cdr/Projects/load-in/out/rickshaw-stop-indie-bands-djs-rock-crowds-in-a-small-funky-space-that-also-offers-food-lounge-areas/fix/booking_page.html",
+        "description": "Standalone booking page with a request-a-date CTA and inquiry form."
+      },
+      {
+        "type": "artist submission intake form",
+        "path": "/Users/cdr/Projects/load-in/out/rickshaw-stop-indie-bands-djs-rock-crowds-in-a-small-funky-space-that-also-offers-food-lounge-areas/fix/artist_submission.html",
+        "description": "Promoter and artist intake form for filling open nights."
+      },
+      {
+        "type": "event schema snippet",
+        "path": "/Users/cdr/Projects/load-in/out/rickshaw-stop-indie-bands-djs-rock-crowds-in-a-small-funky-space-that-also-offers-food-lounge-areas/fix/event_schema.json",
+        "description": "JSON-LD event schema or a reusable template."
+      },
+      {
+        "type": "SEO quick-fix bundle",
+        "path": "/Users/cdr/Projects/load-in/out/rickshaw-stop-indie-bands-djs-rock-crowds-in-a-small-funky-space-that-also-offers-food-lounge-areas/fix/seo_suggestions.json",
+        "description": "Suggested title, meta description, H1, and OpenGraph tags."
+      },
+      {
+        "type": "fill-the-night outreach list",
+        "path": "/Users/cdr/Projects/load-in/out/rickshaw-stop-indie-bands-djs-rock-crowds-in-a-small-funky-space-that-also-offers-food-lounge-areas/fix/fill_the_night_outreach_list.json",
+        "description": "Stub list of local promoter and artist targets inferred from genre signals."
+      }
+    ],
+    "reportPath": "/Users/cdr/Projects/load-in/out/rickshaw-stop-indie-bands-djs-rock-crowds-in-a-small-funky-space-that-also-offers-food-lounge-areas/report.md"
+  }
+}

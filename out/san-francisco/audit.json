@@ -1,0 +1,228 @@
+{
+  "audit": {
+    "venue": {
+      "name": "San Francisco",
+      "slug": "san-francisco",
+      "url": "https://duckduckgo.com/y.js?ad_domain=tickets-center.com&ad_provider=bingv7aa&ad_type=txad&click_metadata=Sw--WpIlwuqGosF0sd_X0zeaH88HjK-i9JoktbBnpayuaHXhAsxeJb1mq48GCkDVIQuQVuBpnf38rs4SSYyALyj6_Z37wDj7kjbbTGpVSoNGftZq7lTg-E1oLByW30_hf-IgpH1gkwDUivL170MAdzUH-yiyY-X0Cq3TokVl57A.30qFbYKUURSLY1urVTl_Aw&rut=6d17ef141cb0a2a5f16f5698deeb4a9c2afd2366e78e261f0a9e929bc688c4fe&u3=https://www.bing.com/aclick?ld=e8f-VSyx0oja08-WMmC_akWTVUCUyNnaajQq6FwpyC_STkHMFWxEF3AHmjxy1UXoA6DdUJLfBltGA9SdT-Y5JLZ_VqHTtbmhxYCoMjoEB5UWR0h3T6379EU0RcM2cKiYuQ_UpkH65u3d_14xdhvu2oVwIMrIm8GtxOHWjMaKJH4yVz1n6UD6HK0AURcopJSspdWnHbeo6dUXIBt2ha9XS5XCQdDs0&u=aHR0cHMlM2ElMmYlMmZ0aWNrZXRzLWNlbnRlci5jb20lMmZmb3JiaWRkZW4tZ3JlYXQtYW1lcmljYW4tbXVzaWMtaGFsbCUzZmFjY2lkJTNkMTM4ODkwNDE5JTI2bmlkJTNkMiUyNmNhbXBhaWduaWQlM2Q1NjkyOTIwNTclMjZhZGdyb3VwaWQlM2QxMTcyMDgxNDYzNTIwMDE2JTI2Y2lkJTNkNzMyNTUzMTAzMzk1MjclMjZrd2lkJTNkNzMyNTU1NDMzNDI1NjclMjZha3dkJTNkZm9yYmlkZGVuJTI1MjBjb25jZXJ0JTI1MjB0aWNrZXRzJTI2ZG10JTNkYiUyNmJtdCUzZGJiJTI2ZGlzdCUzZHMlMjZ1cSUzZFNhbiUyNTIwRnJhbmNpc2NvJTI1MjBtdXNpYyUyNTIwdmVudWUlMjUyMG9mZmljaWFsJTI1MjBzaXRlJTI2ZGV2aWNlJTNkYyUyNm1zY2xraWQlM2Q1MTUyMGYwOGRhZWUxZTE4ZjE4NDY2YWE0ZmE1ZDhjNyUyNmxvY19waHlzaWNhbF9tcyUzZDg3Mzc5JTI2bG9jX2ludGVyZXN0X21zJTNkNDM4OTYlMjZleGlkJTNkJTI2dnglM2Qw&rlid=51520f08daee1e18f18466aa4fa5d8c7&vqd=4-96201925290310343571309764877091865376&iurl={1}IG=056238321D854FC59E8C6D35143A8C17&CID=0DF01F18FF17653530BA0816FE80641C&ID=DevEx,5039.1",
+      "finalUrl": "https://duckduckgo.com/y.js?ad_domain=tickets-center.com&ad_provider=bingv7aa&ad_type=txad&click_metadata=Sw--WpIlwuqGosF0sd_X0zeaH88HjK-i9JoktbBnpayuaHXhAsxeJb1mq48GCkDVIQuQVuBpnf38rs4SSYyALyj6_Z37wDj7kjbbTGpVSoNGftZq7lTg-E1oLByW30_hf-IgpH1gkwDUivL170MAdzUH-yiyY-X0Cq3TokVl57A.30qFbYKUURSLY1urVTl_Aw&rut=6d17ef141cb0a2a5f16f5698deeb4a9c2afd2366e78e261f0a9e929bc688c4fe&u3=https://www.bing.com/aclick?ld=e8f-VSyx0oja08-WMmC_akWTVUCUyNnaajQq6FwpyC_STkHMFWxEF3AHmjxy1UXoA6DdUJLfBltGA9SdT-Y5JLZ_VqHTtbmhxYCoMjoEB5UWR0h3T6379EU0RcM2cKiYuQ_UpkH65u3d_14xdhvu2oVwIMrIm8GtxOHWjMaKJH4yVz1n6UD6HK0AURcopJSspdWnHbeo6dUXIBt2ha9XS5XCQdDs0&u=aHR0cHMlM2ElMmYlMmZ0aWNrZXRzLWNlbnRlci5jb20lMmZmb3JiaWRkZW4tZ3JlYXQtYW1lcmljYW4tbXVzaWMtaGFsbCUzZmFjY2lkJTNkMTM4ODkwNDE5JTI2bmlkJTNkMiUyNmNhbXBhaWduaWQlM2Q1NjkyOTIwNTclMjZhZGdyb3VwaWQlM2QxMTcyMDgxNDYzNTIwMDE2JTI2Y2lkJTNkNzMyNTUzMTAzMzk1MjclMjZrd2lkJTNkNzMyNTU1NDMzNDI1NjclMjZha3dkJTNkZm9yYmlkZGVuJTI1MjBjb25jZXJ0JTI1MjB0aWNrZXRzJTI2ZG10JTNkYiUyNmJtdCUzZGJiJTI2ZGlzdCUzZHMlMjZ1cSUzZFNhbiUyNTIwRnJhbmNpc2NvJTI1MjBtdXNpYyUyNTIwdmVudWUlMjUyMG9mZmljaWFsJTI1MjBzaXRlJTI2ZGV2aWNlJTNkYyUyNm1zY2xraWQlM2Q1MTUyMGYwOGRhZWUxZTE4ZjE4NDY2YWE0ZmE1ZDhjNyUyNmxvY19waHlzaWNhbF9tcyUzZDg3Mzc5JTI2bG9jX2ludGVyZXN0X21zJTNkNDM4OTYlMjZleGlkJTNkJTI2dnglM2Qw&rlid=51520f08daee1e18f18466aa4fa5d8c7&vqd=4-96201925290310343571309764877091865376&iurl={1}IG=056238321D854FC59E8C6D35143A8C17&CID=0DF01F18FF17653530BA0816FE80641C&ID=DevEx,5039.1",
+      "city": "San Francisco",
+      "category": "music venue",
+      "emails": [],
+      "hasForm": false,
+      "hasBookCTA": false,
+      "hasRentalInfo": false,
+      "hasCalendar": false,
+      "hasTickets": false,
+      "hasUpcomingEvents": false,
+      "hasArtistSubmission": false,
+      "hasNewsletter": false,
+      "hasEventSchema": false,
+      "imageCount": 0,
+      "totalImageBytes": 0,
+      "estimatedPageWeight": 0,
+      "wordCount": 0,
+      "genres": [
+        "indie",
+        "punk",
+        "metal",
+        "edm",
+        "comedy"
+      ],
+      "eventCandidates": [],
+      "rawTextSample": "",
+      "notes": [
+        "Site returned HTTP 400",
+        "No clear event cards detected."
+      ],
+      "fetchSucceeded": true
+    },
+    "score": 15,
+    "summaryBullets": [
+      "San Francisco is leaking revenue first through no clear booking cta.",
+      "The audit used live public site data from https://duckduckgo.com/y.js?ad_domain=tickets-center.com&ad_provider=bingv7aa&ad_type=txad&click_metadata=Sw--WpIlwuqGosF0sd_X0zeaH88HjK-i9JoktbBnpayuaHXhAsxeJb1mq48GCkDVIQuQVuBpnf38rs4SSYyALyj6_Z37wDj7kjbbTGpVSoNGftZq7lTg-E1oLByW30_hf-IgpH1gkwDUivL170MAdzUH-yiyY-X0Cq3TokVl57A.30qFbYKUURSLY1urVTl_Aw&rut=6d17ef141cb0a2a5f16f5698deeb4a9c2afd2366e78e261f0a9e929bc688c4fe&u3=https://www.bing.com/aclick?ld=e8f-VSyx0oja08-WMmC_akWTVUCUyNnaajQq6FwpyC_STkHMFWxEF3AHmjxy1UXoA6DdUJLfBltGA9SdT-Y5JLZ_VqHTtbmhxYCoMjoEB5UWR0h3T6379EU0RcM2cKiYuQ_UpkH65u3d_14xdhvu2oVwIMrIm8GtxOHWjMaKJH4yVz1n6UD6HK0AURcopJSspdWnHbeo6dUXIBt2ha9XS5XCQdDs0&u=aHR0cHMlM2ElMmYlMmZ0aWNrZXRzLWNlbnRlci5jb20lMmZmb3JiaWRkZW4tZ3JlYXQtYW1lcmljYW4tbXVzaWMtaGFsbCUzZmFjY2lkJTNkMTM4ODkwNDE5JTI2bmlkJTNkMiUyNmNhbXBhaWduaWQlM2Q1NjkyOTIwNTclMjZhZGdyb3VwaWQlM2QxMTcyMDgxNDYzNTIwMDE2JTI2Y2lkJTNkNzMyNTUzMTAzMzk1MjclMjZrd2lkJTNkNzMyNTU1NDMzNDI1NjclMjZha3dkJTNkZm9yYmlkZGVuJTI1MjBjb25jZXJ0JTI1MjB0aWNrZXRzJTI2ZG10JTNkYiUyNmJtdCUzZGJiJTI2ZGlzdCUzZHMlMjZ1cSUzZFNhbiUyNTIwRnJhbmNpc2NvJTI1MjBtdXNpYyUyNTIwdmVudWUlMjUyMG9mZmljaWFsJTI1MjBzaXRlJTI2ZGV2aWNlJTNkYyUyNm1zY2xraWQlM2Q1MTUyMGYwOGRhZWUxZTE4ZjE4NDY2YWE0ZmE1ZDhjNyUyNmxvY19waHlzaWNhbF9tcyUzZDg3Mzc5JTI2bG9jX2ludGVyZXN0X21zJTNkNDM4OTYlMjZleGlkJTNkJTI2dnglM2Qw&rlid=51520f08daee1e18f18466aa4fa5d8c7&vqd=4-96201925290310343571309764877091865376&iurl={1}IG=056238321D854FC59E8C6D35143A8C17&CID=0DF01F18FF17653530BA0816FE80641C&ID=DevEx,5039.1.",
+      "There is no strong public signal for upcoming events, which likely hurts both discovery and fill rate."
+    ],
+    "leaks": [
+      {
+        "key": "missing-booking-cta",
+        "category": "booking_funnel",
+        "title": "No clear booking CTA",
+        "severity": 18,
+        "whyItMatters": "Buyers cannot immediately see how to book the room, which increases drop-off from high-intent traffic.",
+        "fix": "Add a primary 'Request a date' CTA on the homepage and every private events page.",
+        "evidence": "No obvious 'book', 'rent', or private events CTA was detected."
+      },
+      {
+        "key": "contact-friction",
+        "category": "booking_funnel",
+        "title": "High inquiry friction",
+        "severity": 15,
+        "whyItMatters": "If prospects only see sparse contact information, fewer of them complete a booking inquiry.",
+        "fix": "Publish a short venue inquiry form with event type, preferred dates, and expected attendance.",
+        "evidence": "No inquiry form, phone number, or public booking email was found."
+      },
+      {
+        "key": "no-upcoming-events",
+        "category": "fill_rate",
+        "title": "No obvious upcoming events feed",
+        "severity": 14,
+        "whyItMatters": "An empty events presence makes the venue look inactive and hurts both ticket sales and room demand.",
+        "fix": "Promote upcoming events prominently and keep a crawlable event list live.",
+        "evidence": "No event cards or strong upcoming-events signals were found."
+      },
+      {
+        "key": "missing-rental-info",
+        "category": "booking_funnel",
+        "title": "Missing rental and spec details",
+        "severity": 12,
+        "whyItMatters": "Planners need capacity, room specs, and event-fit details before they reach out.",
+        "fix": "Add a concise private events section with capacity, amenities, and AV/spec highlights.",
+        "evidence": "Terms like capacity, rental, private event, or specs were not detected."
+      },
+      {
+        "key": "no-promoter-intake",
+        "category": "fill_rate",
+        "title": "No promoter or artist intake path",
+        "severity": 11,
+        "whyItMatters": "Without a submission flow, the venue misses inbound opportunities to fill weak nights.",
+        "fix": "Add a lightweight artist/promoter intake form with draw, genre, and date range.",
+        "evidence": "No artist submission or promoter intake terms were detected."
+      },
+      {
+        "key": "weak-seo-metadata",
+        "category": "discovery",
+        "title": "Missing or weak SEO metadata",
+        "severity": 10,
+        "whyItMatters": "Search results underperform when the page title or description is generic or absent.",
+        "fix": "Ship tighter title/meta tags focused on bookings, events, and the venue's city.",
+        "evidence": "Title present: false. Meta description present: false."
+      },
+      {
+        "key": "weak-ticketing-signals",
+        "category": "revenue",
+        "title": "Ticketing or upsell path is unclear",
+        "severity": 10,
+        "whyItMatters": "Fans convert worse when ticket links are inconsistent and upsell messaging is absent.",
+        "fix": "Standardize ticket links and add pre-event upsell blocks for VIP, merch, or drink packages.",
+        "evidence": "No obvious ticketing provider or ticket CTA was detected."
+      },
+      {
+        "key": "missing-event-schema",
+        "category": "discovery",
+        "title": "No event schema markup detected",
+        "severity": 8,
+        "whyItMatters": "Structured event data improves search visibility and helps search engines understand upcoming shows.",
+        "fix": "Publish JSON-LD Event markup for upcoming shows or a reusable schema template.",
+        "evidence": "No JSON-LD Event schema was detected in the page source."
+      },
+      {
+        "key": "no-email-capture",
+        "category": "conversion",
+        "title": "No clear email capture",
+        "severity": 7,
+        "whyItMatters": "Without email capture, the venue loses repeat demand from fans, promoters, and private-event prospects.",
+        "fix": "Add a simple newsletter/signup block with one compelling incentive.",
+        "evidence": "No newsletter or subscribe language was detected."
+      }
+    ],
+    "topLeaks": [
+      {
+        "key": "missing-booking-cta",
+        "category": "booking_funnel",
+        "title": "No clear booking CTA",
+        "severity": 18,
+        "whyItMatters": "Buyers cannot immediately see how to book the room, which increases drop-off from high-intent traffic.",
+        "fix": "Add a primary 'Request a date' CTA on the homepage and every private events page.",
+        "evidence": "No obvious 'book', 'rent', or private events CTA was detected."
+      },
+      {
+        "key": "contact-friction",
+        "category": "booking_funnel",
+        "title": "High inquiry friction",
+        "severity": 15,
+        "whyItMatters": "If prospects only see sparse contact information, fewer of them complete a booking inquiry.",
+        "fix": "Publish a short venue inquiry form with event type, preferred dates, and expected attendance.",
+        "evidence": "No inquiry form, phone number, or public booking email was found."
+      },
+      {
+        "key": "no-upcoming-events",
+        "category": "fill_rate",
+        "title": "No obvious upcoming events feed",
+        "severity": 14,
+        "whyItMatters": "An empty events presence makes the venue look inactive and hurts both ticket sales and room demand.",
+        "fix": "Promote upcoming events prominently and keep a crawlable event list live.",
+        "evidence": "No event cards or strong upcoming-events signals were found."
+      },
+      {
+        "key": "missing-rental-info",
+        "category": "booking_funnel",
+        "title": "Missing rental and spec details",
+        "severity": 12,
+        "whyItMatters": "Planners need capacity, room specs, and event-fit details before they reach out.",
+        "fix": "Add a concise private events section with capacity, amenities, and AV/spec highlights.",
+        "evidence": "Terms like capacity, rental, private event, or specs were not detected."
+      },
+      {
+        "key": "no-promoter-intake",
+        "category": "fill_rate",
+        "title": "No promoter or artist intake path",
+        "severity": 11,
+        "whyItMatters": "Without a submission flow, the venue misses inbound opportunities to fill weak nights.",
+        "fix": "Add a lightweight artist/promoter intake form with draw, genre, and date range.",
+        "evidence": "No artist submission or promoter intake terms were detected."
+      }
+    ]
+  },
+  "analysis": {
+    "impact": {
+      "inquiriesPerMonth": "4-8 additional qualified inquiries/month",
+      "eventsPerMonth": "2-4 additional events/month",
+      "assumptions": [
+        "Ranges assume the venue currently gets meaningful direct traffic but lacks one or more conversion-critical paths.",
+        "Inquiry uplift increases when a visible booking CTA and a low-friction form replace phone-only or buried contact flows.",
+        "Event uplift assumes promoter intake plus a visible upcoming-events surface help fill underbooked nights."
+      ]
+    },
+    "pricing": [
+      {
+        "label": "Performance-based",
+        "details": "12% of incremental booking revenue for the first 90 days, measured against a 60-day pre-launch baseline and tagged inquiry sources."
+      },
+      {
+        "label": "Flat setup + monthly",
+        "details": "$1,500 setup + $350/mo for hosting, optimization, reporting, and monthly fix iterations."
+      }
+    ]
+  },
+  "build": {
+    "outputDir": "/Users/cdr/Projects/load-in/out/san-francisco",
+    "fixAssets": [
+      {
+        "type": "booking inquiry landing page",
+        "path": "/Users/cdr/Projects/load-in/out/san-francisco/fix/booking_page.html",
+        "description": "Standalone booking page with a request-a-date CTA and inquiry form."
+      },
+      {
+        "type": "artist submission intake form",
+        "path": "/Users/cdr/Projects/load-in/out/san-francisco/fix/artist_submission.html",
+        "description": "Promoter and artist intake form for filling open nights."
+      },
+      {
+        "type": "event schema snippet",
+        "path": "/Users/cdr/Projects/load-in/out/san-francisco/fix/event_schema.json",
+        "description": "JSON-LD event schema or a reusable template."
+      },
+      {
+        "type": "SEO quick-fix bundle",
+        "path": "/Users/cdr/Projects/load-in/out/san-francisco/fix/seo_suggestions.json",
+        "description": "Suggested title, meta description, H1, and OpenGraph tags."
+      },
+      {
+        "type": "fill-the-night outreach list",
+        "path": "/Users/cdr/Projects/load-in/out/san-francisco/fix/fill_the_night_outreach_list.json",
+        "description": "Stub list of local promoter and artist targets inferred from genre signals."
+      }
+    ],
+    "reportPath": "/Users/cdr/Projects/load-in/out/san-francisco/report.md"
+  }
+}

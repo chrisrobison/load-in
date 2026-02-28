@@ -1,0 +1,19 @@
+{
+  "instructions": "No reliable event listing was detected, so this is a template. Replace placeholder values and embed on event pages as JSON-LD.",
+  "@context": "https://schema.org",
+  "@type": "Event",
+  "name": "Sample Event Name",
+  "startDate": "2026-06-01T20:00:00-07:00",
+  "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+  "eventStatus": "https://schema.org/EventScheduled",
+  "location": {
+    "@type": "Place",
+    "name": "Redirecting…",
+    "address": "Venue address"
+  },
+  "offers": {
+    "@type": "Offer",
+    "url": "https://bottomofthehill.com/",
+    "availability": "https://schema.org/InStock"
+  }
+}

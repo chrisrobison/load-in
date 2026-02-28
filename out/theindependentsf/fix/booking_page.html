@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Book Theindependentsf</title>
+  <style>
+    :root { color-scheme: light; --bg:#f7f1e8; --ink:#182028; --accent:#bb4d00; --card:#fffdf9; --muted:#685f56; }
+    * { box-sizing: border-box; }
+    body { margin: 0; font-family: Georgia, serif; background: radial-gradient(circle at top, #fff7e8 0, var(--bg) 55%, #efe2d0 100%); color: var(--ink); }
+    .wrap { max-width: 980px; margin: 0 auto; padding: 48px 20px 72px; }
+    .hero, .card { background: rgba(255,253,249,0.88); border: 1px solid rgba(24,32,40,0.1); border-radius: 24px; box-shadow: 0 16px 40px rgba(24,32,40,0.08); }
+    .hero { padding: 36px; margin-bottom: 24px; }
+    .eyebrow { text-transform: uppercase; letter-spacing: 0.16em; color: var(--accent); font: 600 12px/1.2 Arial, sans-serif; }
+    h1 { font-size: clamp(2.4rem, 6vw, 4.6rem); line-height: 0.95; margin: 12px 0 16px; }
+    p { font-size: 1.05rem; line-height: 1.6; }
+    .meta { display:grid; grid-template-columns: repeat(auto-fit,minmax(180px,1fr)); gap: 16px; margin-top: 28px; }
+    .meta div { padding: 16px; background: var(--card); border-radius: 18px; }
+    .cta { display:inline-block; margin-top: 20px; background: var(--accent); color:#fff; text-decoration:none; padding: 14px 18px; border-radius: 999px; font: 600 15px/1 Arial, sans-serif; }
+    .card { padding: 28px; }
+    form { display:grid; grid-template-columns: repeat(auto-fit,minmax(220px,1fr)); gap: 14px; }
+    label { display:flex; flex-direction:column; gap:6px; font: 600 14px/1.3 Arial, sans-serif; }
+    input, select, textarea { width:100%; padding:12px 13px; border-radius:12px; border:1px solid rgba(24,32,40,0.14); font: 16px/1.4 Arial, sans-serif; background:#fff; }
+    textarea { min-height:120px; grid-column:1/-1; }
+    .full { grid-column:1/-1; }
+    button { border:0; border-radius:999px; background:var(--ink); color:#fff; padding:14px 18px; font:600 15px/1 Arial, sans-serif; cursor:pointer; }
+    .stub { color: var(--muted); font-size: 0.95rem; margin-top: 16px; }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <section class="hero">
+      <div class="eyebrow">Private Events + Venue Rentals</div>
+      <h1>Book Theindependentsf</h1>
+      <p>Fast path for planners, promoters, and private-event clients who want real answers quickly. This page gives Theindependentsf a clear booking CTA instead of leaving inquiries to chance.</p>
+      <a class="cta" href="#request-date">Request a date</a>
+      <div class="meta">
+        <div><strong>Location</strong><br>Event venue</div>
+        <div><strong>Capacity</strong><br>Capacity available on request</div>
+        <div><strong>Best for</strong><br>Concerts, private events, release parties, branded activations</div>
+      </div>
+    </section>
+    <section class="card" id="request-date">
+      <h2>Request a date</h2>
+      <form method="post" action="https://example.com/venue-inquiry">
+        <label>Name<input name="name" required></label>
+        <label>Email<input name="email" type="email" required></label>
+        <label>Phone<input name="phone"></label>
+        <label>Event type
+          <select name="eventType">
+            <option>Private event</option>
+            <option>Concert</option>
+            <option>Corporate event</option>
+            <option>Birthday / celebration</option>
+            <option>Brand activation</option>
+          </select>
+        </label>
+        <label>Preferred dates<input name="dates" placeholder="May 12-14 or flexible"></label>
+        <label>Expected attendance<input name="attendance" placeholder="120"></label>
+        <label class="full">Notes<textarea name="notes" placeholder="Timeline, AV needs, ticketing, bar package, special requests"></textarea></label>
+        <div class="full"><button type="submit">Send inquiry</button></div>
+      </form>
+      <p class="stub">Stub endpoint in MVP. Replace the form action with your CRM, Zapier, Airtable, or email webhook.</p>
+    </section>
+  </div>
+</body>
+</html>
