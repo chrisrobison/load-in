@@ -21,6 +21,10 @@ export class ContactFinder {
       const lower = email.toLowerCase();
       const roleHint = /book|booking|events|private|rent/i.test(lower)
         ? "booking"
+        : /reserv|dining|catering/i.test(lower)
+          ? "reservations"
+          : /salon|stylist|appointments|frontdesk/i.test(lower)
+            ? "appointments"
         : /info|hello|contact/i.test(lower)
           ? "general"
           : "unknown";
@@ -45,9 +49,15 @@ export class ContactFinder {
           kind: "email",
           value: email,
           source: profile.finalUrl,
-          roleHint: /book|booking|events|private|rent/i.test(lower) ? "booking" : "general",
-          confidence: /book|booking|events|private|rent/i.test(lower) ? 0.95 : 0.8,
-          isPrimary: /book|booking|events|private|rent/i.test(lower),
+          roleHint: /book|booking|events|private|rent/i.test(lower)
+            ? "booking"
+            : /reserv|dining|catering/i.test(lower)
+              ? "reservations"
+              : /salon|stylist|appointments|frontdesk/i.test(lower)
+                ? "appointments"
+                : "general",
+          confidence: /book|booking|events|private|rent|reserv|dining|catering/i.test(lower) ? 0.95 : /salon|stylist|appointments|frontdesk/i.test(lower) ? 0.9 : 0.8,
+          isPrimary: /book|booking|events|private|rent|reserv|dining|catering|salon|stylist|appointments|frontdesk/i.test(lower),
           status: "active"
         });
       }
@@ -55,15 +65,21 @@ export class ContactFinder {
       $("a").each((_, element) => {
         const href = $(element).attr("href") ?? "";
         const text = $(element).text().trim().toLowerCase();
-        if (/contact|book|private event|rent/i.test(text) && href && !href.startsWith("mailto:")) {
+        if (/contact|book|private event|rent|reserve|reservation|catering|private dining|consult/i.test(text) && href && !href.startsWith("mailto:")) {
           const url = new URL(href, profile.finalUrl).toString();
           push({
             kind: "contact_form",
             value: url,
             source: profile.finalUrl,
-            roleHint: /book|private event|rent/i.test(text) ? "booking" : "general",
-            confidence: /book|private event|rent/i.test(text) ? 0.75 : 0.7,
-            isPrimary: /book|private event|rent/i.test(text),
+            roleHint: /book|private event|rent/i.test(text)
+              ? "booking"
+              : /reserve|reservation|catering|private dining/i.test(text)
+                ? "reservations"
+                : /consult/i.test(text)
+                  ? "appointments"
+                  : "general",
+            confidence: /book|private event|rent|reserve|reservation|catering|private dining/i.test(text) ? 0.75 : /consult/i.test(text) ? 0.78 : 0.7,
+            isPrimary: /book|private event|rent|reserve|reservation|catering|private dining|consult/i.test(text),
             status: "active"
           });
         }

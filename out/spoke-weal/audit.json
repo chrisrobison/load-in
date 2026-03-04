@@ -1,0 +1,247 @@
+{
+  "venue": {
+    "id": "ven_4fug73g2nnb8",
+    "slug": "spokeandweal-com",
+    "name": "Spoke & Weal",
+    "canonicalUrl": "https://www.spokeandweal.com/",
+    "city": "San Francisco",
+    "category": "hair salon",
+    "vertical": "salon",
+    "status": "disqualified",
+    "createdAt": "2026-03-01T00:51:00.830Z",
+    "updatedAt": "2026-03-01T00:52:43.083Z"
+  },
+  "auditRunId": "aud_hy15syk3jg5c",
+  "audit": {
+    "venue": {
+      "name": "Spoke & Weal",
+      "slug": "spoke-weal",
+      "url": "https://www.spokeandweal.com/",
+      "finalUrl": "https://www.spokeandweal.com/",
+      "city": "San Francisco",
+      "category": "hair salon",
+      "vertical": "salon",
+      "title": "Spoke & Weal – best hair salon",
+      "h1": "OUR MISSION",
+      "emails": [],
+      "hasForm": false,
+      "hasBookCTA": true,
+      "hasRentalInfo": false,
+      "hasCalendar": true,
+      "hasTickets": false,
+      "hasUpcomingEvents": false,
+      "hasArtistSubmission": false,
+      "hasNewsletter": false,
+      "hasEventSchema": false,
+      "hasOnlineBooking": false,
+      "hasServiceMenu": true,
+      "hasTeamPage": false,
+      "hasReviews": false,
+      "hasReservations": false,
+      "hasOrderingLink": false,
+      "hasPrivateDining": false,
+      "hasMenuPage": true,
+      "imageCount": 3,
+      "totalImageBytes": 0,
+      "estimatedPageWeight": 88205,
+      "wordCount": 1157,
+      "genres": [
+        "indie",
+        "punk",
+        "metal",
+        "edm",
+        "comedy"
+      ],
+      "keywords": [
+        "cut",
+        "color"
+      ],
+      "eventCandidates": [],
+      "rawTextSample": "Schedule Now Salons Los Angeles San Francisco Bond Flatiron Chicago Palo Alto Boston Austin Nashville Minneapolis Service Menu Press Professional Education Careers FAQ Privacy Policy Schedule A Full Service Hair Salon OUR MISSION To transform the beauty industry, coast to coast. OUR SERVICES Spoke & Weal is a full service hair salon offering dry cut, custom color, keratin, extension, and styling services. Come experience the best haircut and color services in Los Angeles, New York City, San Francisco, Palo Alto, Chicago, Boston, Nashville, Austin, and Minneapolis. SEE FULL LIST OF SERVICES The 10 Rules of Spoke & Weal 01 Beauty comes from within, feeling good is supported by personal care 02 We use natural, responsibly sourced products derived from plant and flower essences 03 Investment…",
+      "notes": [
+        "Fetched successfully with HTTP 200",
+        "No clear event cards detected.",
+        "Vertical adapter: salon"
+      ],
+      "fetchSucceeded": true
+    },
+    "score": 30,
+    "summaryBullets": [
+      "Spoke & Weal is losing high-intent clients because no clear online booking cta.",
+      "The fastest gains likely come from moving more visitors into a low-friction booking or consultation flow.",
+      "Review and proof signals look thin, which matters in a trust-heavy category like salons."
+    ],
+    "leaks": [
+      {
+        "key": "missing-online-booking",
+        "category": "booking_funnel",
+        "title": "No clear online booking CTA",
+        "severity": 18,
+        "whyItMatters": "Prospects comparing salons expect to book immediately. If they cannot, they often bounce to a competitor.",
+        "fix": "Add a primary 'Book now' CTA with service and stylist selection on the homepage and service pages.",
+        "evidence": "No obvious online booking language or booking provider link was detected."
+      },
+      {
+        "key": "missing-consult-form",
+        "category": "booking_funnel",
+        "title": "No consultation or inquiry path",
+        "severity": 12,
+        "whyItMatters": "Higher-value services like color correction or bridal styling need a structured inquiry path to convert.",
+        "fix": "Add a consultation page with intake fields for service type, date, hair goals, and budget.",
+        "evidence": "No form, public email, or phone number was detected."
+      },
+      {
+        "key": "weak-local-seo",
+        "category": "discovery",
+        "title": "Weak local SEO metadata",
+        "severity": 10,
+        "whyItMatters": "Salon discovery depends heavily on branded search and local-intent searches around cuts, color, and extensions.",
+        "fix": "Write local-intent title and meta tags around services and neighborhood/city.",
+        "evidence": "Title present: true. Meta description present: false."
+      },
+      {
+        "key": "missing-stylist-proof",
+        "category": "fill_rate",
+        "title": "Stylist roster is hard to evaluate",
+        "severity": 9,
+        "whyItMatters": "Clients often choose salons based on stylist fit. Weak team pages reduce match confidence and appointment volume.",
+        "fix": "Add a stylist grid with specialties, booking links, and Instagram handles.",
+        "evidence": "No clear team, stylist, or artist roster language was detected."
+      },
+      {
+        "key": "missing-social-proof",
+        "category": "discovery",
+        "title": "Low visible review proof",
+        "severity": 8,
+        "whyItMatters": "Salons rely on trust signals. Weak review proof lowers conversion from first-time clients.",
+        "fix": "Add a review section with Google review snippets and before/after proof.",
+        "evidence": "No strong review or testimonial language was detected."
+      },
+      {
+        "key": "missing-retention-capture",
+        "category": "conversion",
+        "title": "No rebooking or promotion capture",
+        "severity": 7,
+        "whyItMatters": "Owned audience capture is useful for openings, seasonal promotions, bridal packages, and retail promos.",
+        "fix": "Add an email or SMS capture block with a first-visit offer or styling updates hook.",
+        "evidence": "No subscribe, text club, or mailing list prompt was detected."
+      },
+      {
+        "key": "retail-upsell-messaging",
+        "category": "revenue",
+        "title": "Retail and package upsells are not visible",
+        "severity": 6,
+        "whyItMatters": "Color care, memberships, and bridal packages lift revenue, but only if they are surfaced during discovery.",
+        "fix": "Add a section for memberships, package services, and recommended retail bundles.",
+        "evidence": "No strong product, package, or membership messaging was detected."
+      }
+    ],
+    "topLeaks": [
+      {
+        "key": "missing-online-booking",
+        "category": "booking_funnel",
+        "title": "No clear online booking CTA",
+        "severity": 18,
+        "whyItMatters": "Prospects comparing salons expect to book immediately. If they cannot, they often bounce to a competitor.",
+        "fix": "Add a primary 'Book now' CTA with service and stylist selection on the homepage and service pages.",
+        "evidence": "No obvious online booking language or booking provider link was detected."
+      },
+      {
+        "key": "missing-consult-form",
+        "category": "booking_funnel",
+        "title": "No consultation or inquiry path",
+        "severity": 12,
+        "whyItMatters": "Higher-value services like color correction or bridal styling need a structured inquiry path to convert.",
+        "fix": "Add a consultation page with intake fields for service type, date, hair goals, and budget.",
+        "evidence": "No form, public email, or phone number was detected."
+      },
+      {
+        "key": "weak-local-seo",
+        "category": "discovery",
+        "title": "Weak local SEO metadata",
+        "severity": 10,
+        "whyItMatters": "Salon discovery depends heavily on branded search and local-intent searches around cuts, color, and extensions.",
+        "fix": "Write local-intent title and meta tags around services and neighborhood/city.",
+        "evidence": "Title present: true. Meta description present: false."
+      },
+      {
+        "key": "missing-stylist-proof",
+        "category": "fill_rate",
+        "title": "Stylist roster is hard to evaluate",
+        "severity": 9,
+        "whyItMatters": "Clients often choose salons based on stylist fit. Weak team pages reduce match confidence and appointment volume.",
+        "fix": "Add a stylist grid with specialties, booking links, and Instagram handles.",
+        "evidence": "No clear team, stylist, or artist roster language was detected."
+      },
+      {
+        "key": "missing-social-proof",
+        "category": "discovery",
+        "title": "Low visible review proof",
+        "severity": 8,
+        "whyItMatters": "Salons rely on trust signals. Weak review proof lowers conversion from first-time clients.",
+        "fix": "Add a review section with Google review snippets and before/after proof.",
+        "evidence": "No strong review or testimonial language was detected."
+      }
+    ]
+  },
+  "analysis": {
+    "impact": {
+      "inquiriesPerMonth": "4-8 additional bookings or consultation requests/month",
+      "eventsPerMonth": "2-4 additional repeat-visit or package-service opportunities/month",
+      "assumptions": [
+        "Ranges assume the salon already gets local search or Instagram traffic but leaks first-time clients before booking.",
+        "Booking uplift increases when services, stylist fit, and consultation paths are visible without calling first.",
+        "Repeat-visit uplift assumes capture plus package or membership messaging improves rebooking cadence."
+      ]
+    },
+    "pricing": [
+      {
+        "label": "Performance-based",
+        "details": "10% of incremental booked-service revenue for 60 days, measured against the prior 60-day baseline and tracked through tagged booking links."
+      },
+      {
+        "label": "Flat setup + monthly",
+        "details": "$900 setup + $249/mo for booking funnel pages, local SEO updates, offer testing, and monthly optimization."
+      }
+    ]
+  },
+  "build": {
+    "outputDir": "/Users/cdr/Projects/load-in/out/spoke-weal",
+    "fixAssets": [
+      {
+        "type": "client booking landing page",
+        "path": "/Users/cdr/Projects/load-in/out/spoke-weal/fix/booking_page.html",
+        "description": "Standalone booking page with clear service and consultation CTAs."
+      },
+      {
+        "type": "consultation intake form",
+        "path": "/Users/cdr/Projects/load-in/out/spoke-weal/fix/consultation_form.html",
+        "description": "Intake form for color correction, bridal, extensions, and higher-value services."
+      },
+      {
+        "type": "SEO quick-fix bundle",
+        "path": "/Users/cdr/Projects/load-in/out/spoke-weal/fix/seo_suggestions.json",
+        "description": "Suggested title, meta description, H1, and OpenGraph tags for local search."
+      },
+      {
+        "type": "offer schema template",
+        "path": "/Users/cdr/Projects/load-in/out/spoke-weal/fix/offer_schema.json",
+        "description": "Template structured data for special offers, bridal consults, or seasonal promos."
+      }
+    ],
+    "reportPath": "/Users/cdr/Projects/load-in/out/spoke-weal/report.md"
+  },
+  "qualification": {
+    "qualified": false,
+    "autoSendEligible": false,
+    "reason": "disqualified",
+    "rationale": [
+      "Score 30 is below the qualification threshold of 55.",
+      "Top leak severity 18 meets the minimum severity threshold of 10.",
+      "No non-phone contact was found."
+    ],
+    "scoreThreshold": 55,
+    "minLeakSeverity": 10
+  },
+  "contacts": []
+}

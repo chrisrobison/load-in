@@ -1,5 +1,11 @@
 {
-  "note": "Stub outreach list for MVP. Replace with local booking research or API-backed enrichment.",
+  "genres": [
+    "indie",
+    "comedy",
+    "folk",
+    "rock",
+    "electronic"
+  ],
   "entries": [
     {
       "name": "INDIE lead 1",

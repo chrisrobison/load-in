@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Book The Independent</title>
+  <title>Reserve Zuni Cafe</title>
   <style>
     :root { color-scheme: light; --bg:#f7f1e8; --ink:#182028; --accent:#bb4d00; --card:#fffdf9; --muted:#685f56; }
     * { box-sizing: border-box; }
@@ -30,33 +30,25 @@
 <body>
   <div class="wrap">
     <section class="hero">
-      <div class="eyebrow">Private Events + Venue Rentals</div>
-      <h1>Book The Independent</h1>
-      <p>Fast path for planners, promoters, and private-event clients who want real answers quickly. This page gives The Independent a clear booking CTA instead of leaving inquiries to chance.</p>
-      <a class="cta" href="#request-date">Request a date</a>
+      <div class="eyebrow">Reservations + Direct Ordering</div>
+      <h1>Reserve Zuni Cafe</h1>
+      <p>Zuni Cafe should make it effortless for guests to reserve, order direct, or ask about private dining. This page centralizes those conversion paths.</p>
+      <a class="cta" href="#request-date">Reserve a table</a>
       <div class="meta">
-        <div><strong>Location</strong><br>San Francisco</div><div><strong>Capacity</strong><br>Capacity available on request</div><div><strong>Best for</strong><br>Concerts, private events, release parties, branded activations</div>
+        <div><strong>Location</strong><br>1658 Market Street San Francisco, CA 94102</div><div><strong>Best for</strong><br>Dinner reservations, group dining, direct pickup, special nights</div><div><strong>Menu flow</strong><br>Menu detected</div>
       </div>
     </section>
     <section class="card" id="request-date">
-      <h2>Request a date</h2>
-      <form method="post" action="https://example.com/venue-inquiry">
+      <h2>Request a table</h2>
+      <form method="post" action="https://example.com/reservations">
         
         <label>Name<input name="name" required></label>
         <label>Email<input name="email" type="email" required></label>
         <label>Phone<input name="phone"></label>
-        <label>Event type
-          <select name="eventType">
-            <option>Private event</option>
-            <option>Concert</option>
-            <option>Corporate event</option>
-            <option>Birthday / celebration</option>
-            <option>Brand activation</option>
-          </select>
-        </label>
-        <label>Preferred dates<input name="dates" placeholder="May 12-14 or flexible"></label>
-        <label>Expected attendance<input name="attendance" placeholder="120"></label>
-        <label class="full">Notes<textarea name="notes" placeholder="Timeline, AV needs, ticketing, bar package, special requests"></textarea></label>
+        <label>Party size<input name="partySize" placeholder="4" required></label>
+        <label>Date<input name="date" placeholder="Friday, June 12"></label>
+        <label>Time<input name="time" placeholder="7:30 pm"></label>
+        <label class="full">Notes<textarea name="notes" placeholder="Birthday, dietary needs, private room, cocktail package, direct order question"></textarea></label>
       
         <div class="full"><button type="submit">Send inquiry</button></div>
       </form>

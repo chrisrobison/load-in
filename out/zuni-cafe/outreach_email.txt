@@ -1,0 +1,20 @@
+Subject: A few direct-booking fixes I already mocked up for Zuni Cafe
+
+Hi Zuni Cafe team,
+
+I ran a public-site audit on https://zunicafe.com/ and found a few concrete wins around reservations, private dining, and direct orders.
+I noticed no clear direct ordering path on https://zunicafe.com/.
+I also saw private dining or catering path is unclear, which likely costs reservations or direct orders.
+
+I already built a Fix Pack for you: reservation landing page, private dining inquiry page, SEO quick-fix bundle.
+The likely upside is 2-5 additional reservations, catering, or direct-order inquiries/month plus 2-4 additional private dining or slow-night fill opportunities/month.
+
+Two ways to work together:
+1. Performance-based: 10% of incremental direct-booking and direct-order revenue for 60 days, measured against the prior 60-day baseline with tagged booking and ordering links.
+2. Flat setup + monthly: $1,200 setup + $299/mo for reservations funnel fixes, private dining pages, SEO updates, and monthly optimization.
+
+If helpful, I can send the reservation/private dining page link and a screenshot so you can review it quickly.
+
+Want me to send the page link and a screenshot?
+
+If you'd prefer not to hear from me again, reply with unsubscribe.

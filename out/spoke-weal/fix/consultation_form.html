@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Spoke & Weal consultation intake</title>
+  <style>
+    :root { --bg:#0e1a21; --panel:#13252f; --ink:#eff7fb; --muted:#9cb4c0; --accent:#c9ff45; }
+    * { box-sizing:border-box; }
+    body { margin:0; font-family: "Trebuchet MS", sans-serif; background: linear-gradient(135deg, #081217, #12212b 55%, #1a3140); color:var(--ink); }
+    .wrap { max-width:900px; margin:0 auto; padding:40px 20px 72px; }
+    .panel { background:rgba(19,37,47,.92); border:1px solid rgba(255,255,255,.08); border-radius:24px; padding:28px; box-shadow:0 18px 50px rgba(0,0,0,.28); }
+    h1 { font-size: clamp(2rem, 5vw, 4rem); margin:0 0 14px; }
+    p { color:var(--muted); line-height:1.6; }
+    form { display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:14px; margin-top:24px; }
+    label { display:flex; flex-direction:column; gap:6px; font-size:14px; font-weight:700; }
+    input, select, textarea { border:1px solid rgba(255,255,255,.12); border-radius:14px; padding:12px 14px; font:16px/1.4 inherit; color:var(--ink); background:#0b161c; }
+    textarea { min-height:140px; grid-column:1/-1; }
+    .full { grid-column:1/-1; }
+    button { background:var(--accent); color:#081217; border:0; border-radius:999px; padding:14px 18px; font-size:15px; font-weight:800; cursor:pointer; }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <div class="panel">
+      <h1>Spoke & Weal consultation intake</h1>
+      <p>Use this page to capture higher-value services that need more than a basic booking widget. It gives the salon a structured way to qualify and quote premium work.</p>
+      <form method="post" action="https://example.com/salon-consultation">
+        
+        <label>Client name<input name="name" required></label>
+        <label>Email<input name="email" type="email" required></label>
+        <label>Service type
+          <select name="serviceType">
+            <option>Color correction</option>
+            <option>Balayage / blonding</option>
+            <option>Extensions</option>
+            <option>Bridal styling</option>
+            <option>Full transformation</option>
+          </select>
+        </label>
+        <label>Target date<input name="targetDate" placeholder="Wedding on Sept 14"></label>
+        <label>Budget range<input name="budget" placeholder="$300-$600"></label>
+        <label>Reference links<input name="links" placeholder="Instagram, Pinterest, current hair photos"></label>
+        <label class="full">Notes<textarea name="notes" placeholder="Current history, goals, allergies, urgency"></textarea></label>
+      
+        <div class="full"><button type="submit">Submit for review</button></div>
+      </form>
+    </div>
+  </div>
+</body>
+</html>

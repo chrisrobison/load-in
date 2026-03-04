@@ -5,12 +5,13 @@
     "name": "The Independent",
     "canonicalUrl": "https://www.theindependentsf.com/",
     "city": "San Francisco",
-    "category": null,
-    "status": "audited",
+    "category": "music venue",
+    "vertical": "event_venue",
+    "status": "qualified",
     "createdAt": "2026-02-28T10:49:07.084Z",
-    "updatedAt": "2026-02-28T10:51:50.830Z"
+    "updatedAt": "2026-03-01T00:51:17.327Z"
   },
-  "auditRunId": "aud_4mn9p73xm0vo",
+  "auditRunId": "aud_swvohr8o912h",
   "audit": {
     "venue": {
       "name": "The Independent",
@@ -18,6 +19,8 @@
       "url": "https://www.theindependentsf.com/",
       "finalUrl": "https://www.theindependentsf.com/",
       "city": "San Francisco",
+      "category": "music venue",
+      "vertical": "event_venue",
       "title": "The Independent | Live Music in San Francisco, California | Home",
       "metaDescription": "Upcoming events at The Independent in San Francisco, California. Get tickets to upcoming events and find out who's playing.",
       "h1": "Upcoming Shows",
@@ -32,6 +35,14 @@
       "hasArtistSubmission": true,
       "hasNewsletter": true,
       "hasEventSchema": true,
+      "hasOnlineBooking": false,
+      "hasServiceMenu": true,
+      "hasTeamPage": true,
+      "hasReviews": false,
+      "hasReservations": false,
+      "hasOrderingLink": false,
+      "hasPrivateDining": false,
+      "hasMenuPage": true,
       "imageCount": 110,
       "totalImageBytes": 245150,
       "estimatedPageWeight": 679263,
@@ -43,6 +54,10 @@
         "rock",
         "electronic"
       ],
+      "keywords": [
+        "color",
+        "cut"
+      ],
       "eventCandidates": [
         {
           "title": "Upcoming Shows twSendEvent({'twView':'list2','event':'twView'}); /* Custom Style",
@@ -53,15 +68,16 @@
       "rawTextSample": "X jQuery(document).ready(function() { // Functionality that controls hiding/showing the email signup lightbox // Check to see if cookie is set prior to showing email signup after 5 second delay if( Cookies.get('noti') !== 'closed' ) { jQuery('.email-popup-container').delay(5000).fadeIn(); } // If user closes lightbox set cookie for 30 days to not show again jQuery('.nothanks').click(function() { Cookies.set('noti', 'closed', { expires: 30 }); jQuery('.email-popup-container').fadeOut(); }); // If user closes lightbox with X sets cookie and doesn't hide jQuery('#popup-close').click(function() { Cookies.set('noti', 'closed', { expires: 30 }); jQuery('.email-popup-container').fadeOut(); }); // Hides the email submit form 3 seconds after a successful submission and sets 1 year cookie to disabl…",
       "notes": [
         "Fetched successfully with HTTP 200",
-        "Detected 1 possible event listings."
+        "Detected 1 possible event or promotion listings.",
+        "Vertical adapter: event_venue"
       ],
       "fetchSucceeded": true
     },
     "score": 79,
     "summaryBullets": [
-      "The Independent is leaking revenue first through missing rental and spec details.",
-      "The audit used live public site data from https://www.theindependentsf.com/.",
-      "The site appears to list events, but 2 other issues still limit conversions."
+      "The Independent is missing at least one high-intent conversion path: missing rental and spec details.",
+      "The site appears to list events, but 2 other issues still limit conversions.",
+      "The fastest uplift likely comes from reducing friction in the booking and inquiry funnel."
     ],
     "leaks": [
       {
@@ -109,9 +125,9 @@
       "inquiriesPerMonth": "2-5 additional qualified inquiries/month",
       "eventsPerMonth": "1-2 additional events/month",
       "assumptions": [
-        "Ranges assume the venue currently gets meaningful direct traffic but lacks one or more conversion-critical paths.",
-        "Inquiry uplift increases when a visible booking CTA and a low-friction form replace phone-only or buried contact flows.",
-        "Event uplift assumes promoter intake plus a visible upcoming-events surface help fill underbooked nights."
+        "Ranges assume the venue already gets some direct traffic but loses intent at the booking step.",
+        "Inquiry uplift increases when a visible booking CTA and low-friction form replace phone-only or buried contact flows.",
+        "Event uplift assumes promoter intake plus a visible events surface help fill underbooked nights."
       ]
     },
     "pricing": [
@@ -163,14 +179,15 @@
     "rationale": [
       "Score 79 meets the qualification threshold of 55.",
       "Top leak severity 12 meets the minimum severity threshold of 10.",
-      "Primary contact https://www.facebook.com/theindependentsf has confidence 0.75."
+      "Primary contact https://www.facebook.com/theindependentsf has confidence 0.75.",
+      "Venue has already been contacted in the last 21 days."
     ],
     "scoreThreshold": 55,
     "minLeakSeverity": 10
   },
   "contacts": [
     {
-      "id": "con_u3ogszwupv0x",
+      "id": "con_8ddmo4bnvysi",
       "venueId": "ven_vdmad8iuo8za",
       "kind": "contact_form",
       "value": "https://www.facebook.com/theindependentsf",
@@ -179,11 +196,11 @@
       "confidence": 0.75,
       "isPrimary": true,
       "status": "active",
-      "createdAt": "2026-02-28T10:51:50.948Z",
-      "updatedAt": "2026-02-28T10:51:50.948Z"
+      "createdAt": "2026-03-01T00:51:17.476Z",
+      "updatedAt": "2026-03-01T00:51:17.476Z"
     },
     {
-      "id": "con_i731qsfa8fao",
+      "id": "con_efu0pypt4xw8",
       "venueId": "ven_vdmad8iuo8za",
       "kind": "contact_form",
       "value": "https://www.theindependentsf.com/contact/",
@@ -192,11 +209,11 @@
       "confidence": 0.7,
       "isPrimary": false,
       "status": "active",
-      "createdAt": "2026-02-28T10:51:50.948Z",
-      "updatedAt": "2026-02-28T10:51:50.948Z"
+      "createdAt": "2026-03-01T00:51:17.476Z",
+      "updatedAt": "2026-03-01T00:51:17.476Z"
     },
     {
-      "id": "con_pzehnctqc1aq",
+      "id": "con_myd90q2wflp0",
       "venueId": "ven_vdmad8iuo8za",
       "kind": "phone",
       "value": "415.771.1421",
@@ -205,8 +222,8 @@
       "confidence": 0.5,
       "isPrimary": false,
       "status": "active",
-      "createdAt": "2026-02-28T10:51:50.948Z",
-      "updatedAt": "2026-02-28T10:51:50.948Z"
+      "createdAt": "2026-03-01T00:51:17.476Z",
+      "updatedAt": "2026-03-01T00:51:17.476Z"
     }
   ]
 }

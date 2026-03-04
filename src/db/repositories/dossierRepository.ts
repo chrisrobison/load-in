@@ -22,4 +22,13 @@ export class DossierRepository {
     `).run(record);
     return record;
   }
+
+  listByJobId(jobId: string): StageEvent[] {
+    return this.db.prepare(`
+      SELECT id, venue_id as venueId, job_id as jobId, stage, event_type as eventType, decision, details_json as detailsJson, created_at as createdAt
+      FROM stage_events
+      WHERE job_id = ?
+      ORDER BY created_at ASC
+    `).all(jobId) as StageEvent[];
+  }
 }

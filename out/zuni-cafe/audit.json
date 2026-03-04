@@ -1,0 +1,288 @@
+{
+  "venue": {
+    "id": "ven_bqx2tbwwqg0g",
+    "slug": "zunicafe-com",
+    "name": "Zuni Cafe",
+    "canonicalUrl": "https://zunicafe.com/",
+    "city": "San Francisco",
+    "category": "restaurant",
+    "vertical": "restaurant",
+    "status": "discovered",
+    "createdAt": "2026-03-01T00:51:13.512Z",
+    "updatedAt": "2026-03-01T00:51:13.512Z"
+  },
+  "auditRunId": "aud_h0tm7r3b83ex",
+  "audit": {
+    "venue": {
+      "name": "Zuni Cafe",
+      "slug": "zuni-cafe",
+      "url": "https://zunicafe.com/",
+      "finalUrl": "https://zunicafe.com/",
+      "city": "San Francisco",
+      "category": "restaurant",
+      "vertical": "restaurant",
+      "title": "Zuni Café - San Francisco",
+      "metaDescription": "Zuni Café is located at 1658 Market Street in San Francisco",
+      "address": "1658 Market Street San Francisco, CA 94102",
+      "phone": "415-552-2522",
+      "emails": [],
+      "hasForm": false,
+      "hasBookCTA": true,
+      "hasRentalInfo": false,
+      "hasCalendar": false,
+      "hasTickets": false,
+      "hasUpcomingEvents": true,
+      "hasArtistSubmission": false,
+      "hasNewsletter": false,
+      "hasEventSchema": false,
+      "hasOnlineBooking": false,
+      "hasServiceMenu": false,
+      "hasTeamPage": false,
+      "hasReviews": false,
+      "hasReservations": true,
+      "hasOrderingLink": false,
+      "hasPrivateDining": false,
+      "hasMenuPage": true,
+      "imageCount": 15,
+      "totalImageBytes": 4840,
+      "estimatedPageWeight": 44593,
+      "wordCount": 406,
+      "genres": [
+        "jazz"
+      ],
+      "keywords": [
+        "brunch",
+        "cocktails"
+      ],
+      "eventCandidates": [
+        {
+          "title": "About Zuni Café opened in San Francisco, California on , 1979. Zuni Café won the",
+          "dateText": "February 15",
+          "link": "http://zunicafe.com/history/"
+        },
+        {
+          "title": "Menus Our daily changing menus are inspired by seasonal organic ingredients and",
+          "dateText": "Friday",
+          "link": "https://zunicafe.com/wp-content/uploads/Sample-Lunch-menu.pdf"
+        },
+        {
+          "title": "Lunch 11:00 am to 3:00 pm , Saturday",
+          "dateText": "Friday",
+          "link": "https://zunicafe.com/wp-content/uploads/Sample-Lunch-menu.pdf"
+        },
+        {
+          "title": "Brunch 11:00 am to 3:00 pm",
+          "dateText": "Sunday",
+          "link": "https://zunicafe.com/wp-content/uploads/Sample-Brunch-menu.pdf"
+        },
+        {
+          "title": "Dinner 5:00 pm to 9:30 pm  - Sunday",
+          "dateText": "Tuesday",
+          "link": "https://zunicafe.com/wp-content/uploads/Sample-Dinner-menu.pdf"
+        }
+      ],
+      "rawTextSample": "About Menus Reservations Hours & Location 1658 Market Street San Francisco, CA 94102 | 415-552-2522 About Zuni Café opened in San Francisco, California on February 15, 1979. Zuni Café won the James Beard Foundation Award for ‘Outstanding Restaurant’ in 2003 and ‘Outstanding Service’ in 2018. Our history Menus Our daily changing menus are inspired by seasonal organic ingredients and incorporate traditional French and Italian cuisine. Nearly all of the produce, meat, and fish is farmed or harvested in a sustainable manner. Please note that these are sample menus and may not reflect what is currently available at Zuni Café. Lunch 11:00 am to 3:00 pm Friday, Saturday Brunch 11:00 am to 3:00 pm Sunday Dinner 5:00 pm to 9:30 pm Tuesday - Sunday Oyster & Shellfish available all day Dessert avail…",
+      "notes": [
+        "Fetched successfully with HTTP 200",
+        "Detected 5 possible event or promotion listings.",
+        "Vertical adapter: restaurant"
+      ],
+      "fetchSucceeded": true
+    },
+    "score": 64,
+    "summaryBullets": [
+      "Zuni Cafe is leaving dining demand on the table because no clear direct ordering path.",
+      "The biggest gains likely come from making reservations, ordering, and private dining paths more obvious.",
+      "Higher-margin group bookings are likely under-promoted because private dining and catering are hard to find."
+    ],
+    "leaks": [
+      {
+        "key": "weak-direct-ordering",
+        "category": "revenue",
+        "title": "No clear direct ordering path",
+        "severity": 12,
+        "whyItMatters": "Takeout and catering demand leaks to marketplaces when direct ordering is absent or inconsistent.",
+        "fix": "Add a direct order CTA and make it consistent across hero, menu, and footer.",
+        "evidence": "No strong online ordering or pickup CTA was detected."
+      },
+      {
+        "key": "missing-private-dining",
+        "category": "fill_rate",
+        "title": "Private dining or catering path is unclear",
+        "severity": 11,
+        "whyItMatters": "Restaurants often miss higher-margin group bookings when private dining is not surfaced.",
+        "fix": "Add a private dining and catering inquiry page with group size, date, and spend range fields.",
+        "evidence": "No private dining, catering, or group event language was detected."
+      },
+      {
+        "key": "missing-structured-data",
+        "category": "discovery",
+        "title": "Structured event or local offer markup is missing",
+        "severity": 7,
+        "whyItMatters": "Special dinners, brunches, happy hours, and tasting events become easier to discover with structured data.",
+        "fix": "Publish JSON-LD for special events or offer templates for recurring dining promotions.",
+        "evidence": "No JSON-LD event schema was detected."
+      },
+      {
+        "key": "missing-promotions-capture",
+        "category": "conversion",
+        "title": "No email capture for promotions and events",
+        "severity": 6,
+        "whyItMatters": "Owned audience capture helps fill slow nights, launches, wine dinners, and seasonal menus.",
+        "fix": "Add a newsletter capture with a clear hook like first access to specials or event nights.",
+        "evidence": "No newsletter or subscribe path was detected."
+      }
+    ],
+    "topLeaks": [
+      {
+        "key": "weak-direct-ordering",
+        "category": "revenue",
+        "title": "No clear direct ordering path",
+        "severity": 12,
+        "whyItMatters": "Takeout and catering demand leaks to marketplaces when direct ordering is absent or inconsistent.",
+        "fix": "Add a direct order CTA and make it consistent across hero, menu, and footer.",
+        "evidence": "No strong online ordering or pickup CTA was detected."
+      },
+      {
+        "key": "missing-private-dining",
+        "category": "fill_rate",
+        "title": "Private dining or catering path is unclear",
+        "severity": 11,
+        "whyItMatters": "Restaurants often miss higher-margin group bookings when private dining is not surfaced.",
+        "fix": "Add a private dining and catering inquiry page with group size, date, and spend range fields.",
+        "evidence": "No private dining, catering, or group event language was detected."
+      },
+      {
+        "key": "missing-structured-data",
+        "category": "discovery",
+        "title": "Structured event or local offer markup is missing",
+        "severity": 7,
+        "whyItMatters": "Special dinners, brunches, happy hours, and tasting events become easier to discover with structured data.",
+        "fix": "Publish JSON-LD for special events or offer templates for recurring dining promotions.",
+        "evidence": "No JSON-LD event schema was detected."
+      },
+      {
+        "key": "missing-promotions-capture",
+        "category": "conversion",
+        "title": "No email capture for promotions and events",
+        "severity": 6,
+        "whyItMatters": "Owned audience capture helps fill slow nights, launches, wine dinners, and seasonal menus.",
+        "fix": "Add a newsletter capture with a clear hook like first access to specials or event nights.",
+        "evidence": "No newsletter or subscribe path was detected."
+      }
+    ]
+  },
+  "analysis": {
+    "impact": {
+      "inquiriesPerMonth": "2-5 additional reservations, catering, or direct-order inquiries/month",
+      "eventsPerMonth": "2-4 additional private dining or slow-night fill opportunities/month",
+      "assumptions": [
+        "Ranges assume the restaurant already gets direct search, map, or social traffic but leaks guests before booking.",
+        "Reservation lift increases when reservations, menu access, and ordering are visible above the fold.",
+        "Private-dining lift assumes a clear group-booking path and events/promotions calendar help monetize slower nights."
+      ]
+    },
+    "pricing": [
+      {
+        "label": "Performance-based",
+        "details": "10% of incremental direct-booking and direct-order revenue for 60 days, measured against the prior 60-day baseline with tagged booking and ordering links."
+      },
+      {
+        "label": "Flat setup + monthly",
+        "details": "$1,200 setup + $299/mo for reservations funnel fixes, private dining pages, SEO updates, and monthly optimization."
+      }
+    ]
+  },
+  "build": {
+    "outputDir": "/Users/cdr/Projects/load-in/out/zuni-cafe",
+    "fixAssets": [
+      {
+        "type": "reservation landing page",
+        "path": "/Users/cdr/Projects/load-in/out/zuni-cafe/fix/booking_page.html",
+        "description": "Direct reservation page with reservation, order, and group dining CTAs."
+      },
+      {
+        "type": "private dining inquiry page",
+        "path": "/Users/cdr/Projects/load-in/out/zuni-cafe/fix/private_dining.html",
+        "description": "Inquiry flow for private dining, catering, and large-party bookings."
+      },
+      {
+        "type": "SEO quick-fix bundle",
+        "path": "/Users/cdr/Projects/load-in/out/zuni-cafe/fix/seo_suggestions.json",
+        "description": "Suggested title, meta description, H1, and OpenGraph tags for reservations and menu intent."
+      },
+      {
+        "type": "events/promotions schema template",
+        "path": "/Users/cdr/Projects/load-in/out/zuni-cafe/fix/event_schema.json",
+        "description": "Structured-data snippet for tastings, brunches, happy hours, or chef dinners."
+      }
+    ],
+    "reportPath": "/Users/cdr/Projects/load-in/out/zuni-cafe/report.md"
+  },
+  "qualification": {
+    "qualified": true,
+    "autoSendEligible": false,
+    "reason": "qualified_manual_or_env_gate",
+    "rationale": [
+      "Score 64 meets the qualification threshold of 55.",
+      "Top leak severity 12 meets the minimum severity threshold of 10.",
+      "Primary contact https://zunicafe.com/#reservations has confidence 0.75."
+    ],
+    "scoreThreshold": 55,
+    "minLeakSeverity": 10
+  },
+  "contacts": [
+    {
+      "id": "con_qs5kofa9qpar",
+      "venueId": "ven_bqx2tbwwqg0g",
+      "kind": "contact_form",
+      "value": "https://zunicafe.com/#reservations",
+      "source": "https://zunicafe.com/",
+      "roleHint": "reservations",
+      "confidence": 0.75,
+      "isPrimary": true,
+      "status": "active",
+      "createdAt": "2026-03-01T00:51:13.922Z",
+      "updatedAt": "2026-03-01T00:51:13.922Z"
+    },
+    {
+      "id": "con_njiue6dmrh7i",
+      "venueId": "ven_bqx2tbwwqg0g",
+      "kind": "contact_form",
+      "value": "https://www.opentable.com/zuni-cafe-reservations-san-francisco?restref=4485&lang=en-US&ot_source=Restaurant%20website",
+      "source": "https://zunicafe.com/",
+      "roleHint": "reservations",
+      "confidence": 0.75,
+      "isPrimary": true,
+      "status": "active",
+      "createdAt": "2026-03-01T00:51:13.922Z",
+      "updatedAt": "2026-03-01T00:51:13.922Z"
+    },
+    {
+      "id": "con_6e1teppop6hy",
+      "venueId": "ven_bqx2tbwwqg0g",
+      "kind": "contact_form",
+      "value": "https://zunicafe.com/cookbook/",
+      "source": "https://zunicafe.com/",
+      "roleHint": "booking",
+      "confidence": 0.75,
+      "isPrimary": true,
+      "status": "active",
+      "createdAt": "2026-03-01T00:51:13.922Z",
+      "updatedAt": "2026-03-01T00:51:13.922Z"
+    },
+    {
+      "id": "con_emhpokyt7b5d",
+      "venueId": "ven_bqx2tbwwqg0g",
+      "kind": "phone",
+      "value": "415-552-2522",
+      "source": "audit_profile",
+      "roleHint": "front-desk",
+      "confidence": 0.5,
+      "isPrimary": false,
+      "status": "active",
+      "createdAt": "2026-03-01T00:51:13.922Z",
+      "updatedAt": "2026-03-01T00:51:13.922Z"
+    }
+  ]
+}

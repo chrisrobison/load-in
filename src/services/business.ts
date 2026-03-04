@@ -68,6 +68,7 @@ export class BusinessService {
       canonicalUrl: venue.canonicalUrl,
       city: venue.city,
       category: venue.category,
+      vertical: venue.vertical,
       status: "contacted"
     });
     this.dossierRepository.append({
@@ -134,6 +135,7 @@ export class BusinessService {
       canonicalUrl: dossier.venue.canonicalUrl,
       city: dossier.venue.city,
       category: dossier.venue.category,
+      vertical: dossier.venue.vertical,
       status: "checkout_sent"
     });
     this.dossierRepository.append({
@@ -152,10 +154,10 @@ export class BusinessService {
       `Checkout link: ${checkout.checkoutUrl}`,
       "",
       "Included in the first delivery:",
-      "- booking page",
-      "- artist intake form",
+      "- booking / conversion page",
+      "- intake or secondary conversion form",
       "- SEO and schema fixes",
-      "- venue dossier and delivery portal",
+      "- dossier and delivery portal",
       "",
       "Reply if you want the performance-based option instead."
     ].join("\n");
@@ -251,6 +253,7 @@ export class BusinessService {
       canonicalUrl: dossier.venue.canonicalUrl,
       city: dossier.venue.city,
       category: dossier.venue.category,
+      vertical: dossier.venue.vertical,
       status: "fulfilled"
     });
     this.dossierRepository.append({

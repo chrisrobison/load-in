@@ -6,6 +6,7 @@ CREATE TABLE IF NOT EXISTS venues (
   canonical_url TEXT,
   city TEXT,
   category TEXT,
+  vertical TEXT,
   status TEXT NOT NULL,
   created_at TEXT NOT NULL,
   updated_at TEXT NOT NULL

@@ -12,15 +12,23 @@
       <div>
         <p class="eyebrow">Ops Dashboard</p>
         <h1>Autonomous Fixer</h1>
-        <p class="intro">Scout venues, persist every agent decision, launch outreach, collect payment, and hand off deliverables from one console.</p>
+        <p class="intro">Launch autonomous business audits from the left, then inspect jobs, leads, and live agent activity in the workspace on the right.</p>
       </div>
 
       <section class="control-panel">
         <h2>Launch single audit</h2>
         <form id="single-audit-form" class="stack-form">
           <label>
-            Venue name or URL
-            <input id="single-query" name="query" placeholder="The Independent or https://venue.com" required>
+            Business niche
+            <select id="single-vertical" name="vertical">
+              <option value="event_venue">Event venue</option>
+              <option value="salon">Salon</option>
+              <option value="restaurant">Restaurant</option>
+            </select>
+          </label>
+          <label>
+            Business name or URL
+            <input id="single-query" name="query" placeholder="The Independent or https://business.com" required>
           </label>
           <label>
             Optional city
@@ -34,11 +42,19 @@
         <h2>Reconnaissance</h2>
         <form id="city-audit-form" class="stack-form">
           <label>
+            Business niche
+            <select id="city-vertical" name="vertical">
+              <option value="event_venue">Event venue</option>
+              <option value="salon">Salon</option>
+              <option value="restaurant">Restaurant</option>
+            </select>
+          </label>
+          <label>
             City
             <input id="city-name" name="city" placeholder="Austin" required>
           </label>
           <label>
-            Venue category
+            Category
             <input id="city-category" name="category" value="music venue" required>
           </label>
           <label>
@@ -46,91 +62,23 @@
             <input id="city-limit" name="limit" type="number" min="1" max="20" value="5">
           </label>
           <div class="button-row">
-            <button type="button" id="preview-recon">Preview venues</button>
+            <button type="button" id="preview-recon">Run recon</button>
             <button type="submit">Audit entire city</button>
           </div>
         </form>
-        <div id="recon-results" class="recon-results muted">No reconnaissance run yet.</div>
       </section>
 
       <section class="control-panel">
-        <h2>Jobs</h2>
-        <div id="job-status" class="job-status muted">No jobs launched yet.</div>
-      </section>
-
-      <section>
-        <h2 class="sidebar-heading">Leads</h2>
-        <div id="venue-list" class="venue-list"></div>
+        <h2>Launch state</h2>
+        <div id="launch-status" class="muted">No active launch yet.</div>
       </section>
     </aside>
 
     <main class="main">
-      <section id="empty-state" class="empty-state">
-        <h2>No venue selected</h2>
-        <p>Launch a new audit or pick a venue from the left to inspect the audit, dossier timeline, outreach queue, billing state, and delivery links.</p>
-      </section>
-      <section id="detail" class="detail hidden">
-        <div class="detail-header">
-          <div>
-            <p class="eyebrow" id="venue-url"></p>
-            <h2 id="venue-name"></h2>
-            <p id="venue-status" class="muted"></p>
-          </div>
-          <div class="score-card">
-            <span>Audit score</span>
-            <strong id="venue-score"></strong>
-          </div>
-        </div>
-        <div class="grid">
-          <article class="panel">
-            <h3>Top leaks</h3>
-            <ul id="top-leaks" class="list"></ul>
-          </article>
-          <article class="panel">
-            <h3>Qualification</h3>
-            <div id="qualification" class="stack-block"></div>
-          </article>
-          <article class="panel">
-            <h3>Estimated impact</h3>
-            <div id="impact"></div>
-          </article>
-          <article class="panel">
-            <h3>Contacts</h3>
-            <ul id="contacts" class="list"></ul>
-          </article>
-          <article class="panel wide">
-            <h3>Audit report</h3>
-            <pre id="report" class="pre"></pre>
-          </article>
-          <article class="panel">
-            <h3>Outreach email</h3>
-            <pre id="email" class="pre"></pre>
-          </article>
-          <article class="panel">
-            <h3>Short DM</h3>
-            <pre id="dm" class="pre"></pre>
-          </article>
-          <article class="panel">
-            <div class="panel-header">
-              <h3>Outreach threads</h3>
-              <button id="send-thread-button" type="button">Send draft</button>
-            </div>
-            <ul id="threads" class="list"></ul>
-          </article>
-          <article class="panel">
-            <h3>Billing + delivery</h3>
-            <div id="billing" class="stack-block"></div>
-          </article>
-          <article class="panel">
-            <h3>Fix pack</h3>
-            <ul id="fix-files" class="list"></ul>
-          </article>
-          <article class="panel wide">
-            <h3>Dossier timeline</h3>
-            <ul id="timeline" class="timeline"></ul>
-          </article>
-        </div>
-      </section>
+      <div class="workspace">
+        <div class="tab-bar" id="tab-bar"></div>
+        <div class="tab-panels" id="tab-panels"></div>
+      </div>
     </main>
   </div>
   <script type="module" src="/app.js"></script>

@@ -1,14 +1,16 @@
 import * as cheerio from "cheerio";
 import { fetchPage } from "../utils/http.js";
 import { cleanWhitespace, estimateGenreKeywords, extractEmails, extractPhone, toSlug, truncate } from "../utils/text.js";
-import type { AuditResult, EventCandidate, Leak, VenueCandidate, VenueProfile } from "../types.js";
+import type { AuditResult, EventCandidate, VenueCandidate, VenueProfile } from "../types.js";
+import { getVerticalAdapter, inferVertical } from "../verticals/index.js";
 
 export class Auditor {
   async run(candidate: VenueCandidate): Promise<AuditResult> {
     const profile = await this.buildProfile(candidate);
-    const leaks = this.detectLeaks(profile);
+    const adapter = getVerticalAdapter(profile.vertical);
+    const leaks = adapter.detectLeaks(profile);
     const score = Math.max(15, 100 - leaks.reduce((sum, leak) => sum + leak.severity, 0));
-    const summaryBullets = this.buildSummary(profile, leaks);
+    const summaryBullets = adapter.buildSummary(profile, leaks);
 
     return {
       venue: profile,
@@ -20,6 +22,9 @@ export class Auditor {
   }
 
   private async buildProfile(candidate: VenueCandidate): Promise<VenueProfile> {
+    const vertical = candidate.vertical ?? inferVertical(candidate.category);
+    const category = candidate.category ?? getVerticalAdapter(vertical).defaultCategory;
+
     try {
       const fetched = await fetchPage(candidate.url);
       const $ = cheerio.load(fetched.html);
@@ -34,9 +39,11 @@ export class Auditor {
       ])).filter(Boolean);
       const forms = $("form");
       const linksText = cleanWhitespace($("a, button").text().toLowerCase());
+      const lowerText = text.toLowerCase();
       const eventCandidates = this.extractEvents($);
       const imageBytes = $("img").map((_, el) => Number($(el).attr("width")) * Number($(el).attr("height")) * 0.2 || 0).get();
       const rawJsonLd = $("script[type='application/ld+json']").text();
+      const keywordMatches = Array.from(new Set((lowerText.match(/\b(?:bridal|balayage|extensions|color|cut|blowout|brunch|cocktails|private dining|catering|happy hour|live music|promoter|ticketing)\b/g) ?? [])));
 
       return {
         name: this.resolveVenueName(candidate, title, h1),
@@ -44,7 +51,8 @@ export class Auditor {
         url: candidate.url,
         finalUrl: fetched.url,
         city: candidate.city ?? this.inferCity(`${title} ${metaDescription}`),
-        category: candidate.category,
+        category,
+        vertical,
         title: title || undefined,
         metaDescription: metaDescription || undefined,
         h1: h1 || undefined,
@@ -56,20 +64,30 @@ export class Auditor {
         hasRentalInfo: /(capacity|floor plan|tech specs|private event|rental|venue specs)/i.test(text),
         hasCalendar: /(calendar|schedule)/i.test(text),
         hasTickets: /(tickets|ticketmaster|eventbrite|seetickets)/i.test(text),
-        hasUpcomingEvents: eventCandidates.length > 0 || /(upcoming events|shows this week|calendar)/i.test(text),
+        hasUpcomingEvents: eventCandidates.length > 0 || /(upcoming events|shows this week|calendar|specials|happy hour|upcoming classes|events)/i.test(text),
         hasArtistSubmission: /(submit your band|artist submission|promoter|booking inquiry|submit)/i.test(text),
-        hasNewsletter: /(newsletter|mailing list|subscribe)/i.test(text),
+        hasNewsletter: /(newsletter|mailing list|subscribe|text club|vip list)/i.test(text),
         hasEventSchema: /Event/i.test(rawJsonLd),
+        hasOnlineBooking: /(book now|book online|reserve your appointment|book appointment|vagaro|glossgenius|square appointments|fresha|mindbody)/i.test(`${linksText} ${lowerText}`),
+        hasServiceMenu: /(services|haircut|balayage|highlights|color correction|blowout|extensions|treatments|pricing|service menu)/i.test(text),
+        hasTeamPage: /(our team|meet the team|stylists|artists|staff|barbers)/i.test(text),
+        hasReviews: /(reviews|testimonials|what clients say|google reviews|five stars)/i.test(text),
+        hasReservations: /(reserve|reservation|book a table|opentable|resy|tock)/i.test(`${linksText} ${lowerText}`),
+        hasOrderingLink: /(order online|pickup|delivery|doordash|ubereats|grubhub|toasttab|caviar)/i.test(`${linksText} ${lowerText}`),
+        hasPrivateDining: /(private dining|catering|group dining|large party|private events)/i.test(text),
+        hasMenuPage: /(menu|wine list|cocktails|brunch|dinner|lunch|dessert)/i.test(text),
         imageCount: $("img").length,
         totalImageBytes: imageBytes.reduce((sum, bytes) => sum + bytes, 0),
         estimatedPageWeight: fetched.html.length + imageBytes.reduce((sum, bytes) => sum + bytes, 0),
         wordCount: text.split(/\s+/).filter(Boolean).length,
         genres: estimateGenreKeywords(text),
+        keywords: keywordMatches,
         eventCandidates,
         rawTextSample: truncate(text, 800),
         notes: [
           fetched.status >= 400 ? `Site returned HTTP ${fetched.status}` : `Fetched successfully with HTTP ${fetched.status}`,
-          eventCandidates.length > 0 ? `Detected ${eventCandidates.length} possible event listings.` : "No clear event cards detected."
+          eventCandidates.length > 0 ? `Detected ${eventCandidates.length} possible event or promotion listings.` : "No clear event cards detected.",
+          `Vertical adapter: ${vertical}`
         ],
         fetchSucceeded: true
       };
@@ -81,7 +99,8 @@ export class Auditor {
         url: candidate.url,
         finalUrl: candidate.url,
         city: candidate.city,
-        category: candidate.category,
+        category,
+        vertical,
         emails: [],
         hasForm: false,
         hasBookCTA: false,
@@ -92,11 +111,20 @@ export class Auditor {
         hasArtistSubmission: false,
         hasNewsletter: false,
         hasEventSchema: false,
+        hasOnlineBooking: false,
+        hasServiceMenu: false,
+        hasTeamPage: false,
+        hasReviews: false,
+        hasReservations: false,
+        hasOrderingLink: false,
+        hasPrivateDining: false,
+        hasMenuPage: false,
         imageCount: 0,
         totalImageBytes: 0,
         estimatedPageWeight: 0,
         wordCount: 0,
         genres: ["indie", "punk", "metal", "edm", "comedy"],
+        keywords: [],
         eventCandidates: [],
         rawTextSample: "",
         notes: [`Fetch failed: ${error instanceof Error ? error.message : "unknown error"}`],
@@ -113,7 +141,9 @@ export class Auditor {
       "calendar",
       "tickets",
       "redirecting",
-      "redirecting…"
+      "redirecting…",
+      "menu",
+      "reservations"
     ]);
 
     if (candidate.source === "seed" && candidate.name.trim().length > 0) {
@@ -127,8 +157,8 @@ export class Auditor {
       const normalizedValue = this.normalizeVenueName(value);
       return !genericNames.has(normalizedValue.toLowerCase()) && normalizedValue.length <= 60;
     });
-    const normalized = this.normalizeVenueName(preferred ?? "Venue");
-    return normalized || "Venue";
+    const normalized = this.normalizeVenueName(preferred ?? "Business");
+    return normalized || "Business";
   }
 
   private normalizeVenueName(value: string): string {
@@ -158,7 +188,7 @@ export class Auditor {
   }
 
   private extractEvents($: cheerio.CheerioAPI): EventCandidate[] {
-    const nodes = $("article, .event, .event-card, li, .tribe-events-event, .show, .calendar-item");
+    const nodes = $("article, .event, .event-card, li, .tribe-events-event, .show, .calendar-item, .special, .promotion");
     const results: EventCandidate[] = [];
 
     nodes.each((_, el) => {
@@ -168,7 +198,8 @@ export class Auditor {
       }
       const dateText = text.match(/\b(?:jan|feb|mar|apr|may|jun|jul|aug|sep|oct|nov|dec)[a-z]*\.?\s+\d{1,2}\b/i)?.[0]
         ?? text.match(/\b\d{1,2}\/\d{1,2}(?:\/\d{2,4})?\b/)?.[0]
-        ?? text.match(/\b(?:monday|tuesday|wednesday|thursday|friday|saturday|sunday)\b/i)?.[0];
+        ?? text.match(/\b(?:monday|tuesday|wednesday|thursday|friday|saturday|sunday)\b/i)?.[0]
+        ?? text.match(/\b(?:happy hour|brunch|tasting menu|wine dinner)\b/i)?.[0];
 
       if (!dateText) {
         return;
@@ -183,147 +214,5 @@ export class Auditor {
     });
 
     return results.slice(0, 5);
-  }
-
-  private detectLeaks(profile: VenueProfile): Leak[] {
-    const leaks: Leak[] = [];
-
-    if (!profile.hasBookCTA) {
-      leaks.push({
-        key: "missing-booking-cta",
-        category: "booking_funnel",
-        title: "No clear booking CTA",
-        severity: 18,
-        whyItMatters: "Buyers cannot immediately see how to book the room, which increases drop-off from high-intent traffic.",
-        fix: "Add a primary 'Request a date' CTA on the homepage and every private events page.",
-        evidence: "No obvious 'book', 'rent', or private events CTA was detected."
-      });
-    }
-
-    if (!profile.hasForm && !profile.phone && profile.emails.length === 0) {
-      leaks.push({
-        key: "contact-friction",
-        category: "booking_funnel",
-        title: "High inquiry friction",
-        severity: 15,
-        whyItMatters: "If prospects only see sparse contact information, fewer of them complete a booking inquiry.",
-        fix: "Publish a short venue inquiry form with event type, preferred dates, and expected attendance.",
-        evidence: "No inquiry form, phone number, or public booking email was found."
-      });
-    }
-
-    if (!profile.hasRentalInfo) {
-      leaks.push({
-        key: "missing-rental-info",
-        category: "booking_funnel",
-        title: "Missing rental and spec details",
-        severity: 12,
-        whyItMatters: "Planners need capacity, room specs, and event-fit details before they reach out.",
-        fix: "Add a concise private events section with capacity, amenities, and AV/spec highlights.",
-        evidence: "Terms like capacity, rental, private event, or specs were not detected."
-      });
-    }
-
-    if (!profile.title || !profile.metaDescription) {
-      leaks.push({
-        key: "weak-seo-metadata",
-        category: "discovery",
-        title: "Missing or weak SEO metadata",
-        severity: 10,
-        whyItMatters: "Search results underperform when the page title or description is generic or absent.",
-        fix: "Ship tighter title/meta tags focused on bookings, events, and the venue's city.",
-        evidence: `Title present: ${Boolean(profile.title)}. Meta description present: ${Boolean(profile.metaDescription)}.`
-      });
-    }
-
-    if (!profile.hasEventSchema) {
-      leaks.push({
-        key: "missing-event-schema",
-        category: "discovery",
-        title: "No event schema markup detected",
-        severity: 8,
-        whyItMatters: "Structured event data improves search visibility and helps search engines understand upcoming shows.",
-        fix: "Publish JSON-LD Event markup for upcoming shows or a reusable schema template.",
-        evidence: "No JSON-LD Event schema was detected in the page source."
-      });
-    }
-
-    if (profile.estimatedPageWeight > 700_000 || profile.imageCount > 25) {
-      leaks.push({
-        key: "heavy-page",
-        category: "conversion",
-        title: "Page likely too heavy",
-        severity: 9,
-        whyItMatters: "Slow pages depress ticket clicks and booking inquiries, especially on mobile.",
-        fix: "Compress hero media, lazy-load secondary images, and reduce oversized assets.",
-        evidence: `Estimated page weight ${Math.round(profile.estimatedPageWeight / 1024)} KB with ${profile.imageCount} images.`
-      });
-    }
-
-    if (!profile.hasNewsletter) {
-      leaks.push({
-        key: "no-email-capture",
-        category: "conversion",
-        title: "No clear email capture",
-        severity: 7,
-        whyItMatters: "Without email capture, the venue loses repeat demand from fans, promoters, and private-event prospects.",
-        fix: "Add a simple newsletter/signup block with one compelling incentive.",
-        evidence: "No newsletter or subscribe language was detected."
-      });
-    }
-
-    if (!profile.hasUpcomingEvents) {
-      leaks.push({
-        key: "no-upcoming-events",
-        category: "fill_rate",
-        title: "No obvious upcoming events feed",
-        severity: 14,
-        whyItMatters: "An empty events presence makes the venue look inactive and hurts both ticket sales and room demand.",
-        fix: "Promote upcoming events prominently and keep a crawlable event list live.",
-        evidence: "No event cards or strong upcoming-events signals were found."
-      });
-    }
-
-    if (!profile.hasArtistSubmission) {
-      leaks.push({
-        key: "no-promoter-intake",
-        category: "fill_rate",
-        title: "No promoter or artist intake path",
-        severity: 11,
-        whyItMatters: "Without a submission flow, the venue misses inbound opportunities to fill weak nights.",
-        fix: "Add a lightweight artist/promoter intake form with draw, genre, and date range.",
-        evidence: "No artist submission or promoter intake terms were detected."
-      });
-    }
-
-    if (!profile.hasTickets) {
-      leaks.push({
-        key: "weak-ticketing-signals",
-        category: "revenue",
-        title: "Ticketing or upsell path is unclear",
-        severity: 10,
-        whyItMatters: "Fans convert worse when ticket links are inconsistent and upsell messaging is absent.",
-        fix: "Standardize ticket links and add pre-event upsell blocks for VIP, merch, or drink packages.",
-        evidence: "No obvious ticketing provider or ticket CTA was detected."
-      });
-    }
-
-    return leaks.sort((a, b) => b.severity - a.severity);
-  }
-
-  private buildSummary(profile: VenueProfile, leaks: Leak[]): string[] {
-    const bullets = [
-      leaks[0]
-        ? `${profile.name} is leaking revenue first through ${leaks[0].title.toLowerCase()}.`
-        : `${profile.name} has a relatively healthy public funnel, with only minor issues found.`,
-      profile.fetchSucceeded
-        ? `The audit used live public site data from ${profile.finalUrl}.`
-        : "The audit used fallback assumptions because the site could not be fetched reliably.",
-      profile.eventCandidates.length > 0
-        ? `The site appears to list events, but ${leaks.filter((leak) => leak.category !== "fill_rate").length} other issues still limit conversions.`
-        : "There is no strong public signal for upcoming events, which likely hurts both discovery and fill rate."
-    ];
-
-    return bullets;
   }
 }

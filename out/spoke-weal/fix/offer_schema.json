@@ -1,0 +1,14 @@
+{
+  "instructions": "Adapt this Offer schema for a first-visit promotion, bridal consult, or seasonal package and embed it on the relevant landing page.",
+  "@context": "https://schema.org",
+  "@type": "Offer",
+  "name": "Spoke & Weal first-visit consultation",
+  "url": "https://www.spokeandweal.com/",
+  "description": "Consultation-based salon offer with service planning and next-step booking.",
+  "availability": "https://schema.org/InStock",
+  "seller": {
+    "@type": "HairSalon",
+    "name": "Spoke & Weal",
+    "address": "San Francisco"
+  }
+}

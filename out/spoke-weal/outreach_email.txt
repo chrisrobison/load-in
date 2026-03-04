@@ -1,0 +1,20 @@
+Subject: A few client-booking fixes I already mapped out for Spoke & Weal
+
+Hi Spoke & Weal team,
+
+I ran a public-site audit on https://www.spokeandweal.com/ and found a few quick wins that could lift new-client bookings.
+I noticed no clear online booking cta on https://www.spokeandweal.com/.
+I also saw no consultation or inquiry path, which likely makes new-client conversion harder.
+
+To make it concrete, I already built a Fix Pack for you: client booking landing page, consultation intake form, SEO quick-fix bundle.
+The likely upside is 4-8 additional bookings or consultation requests/month.
+
+Two ways to work together:
+1. Performance-based: 10% of incremental booked-service revenue for 60 days, measured against the prior 60-day baseline and tracked through tagged booking links.
+2. Flat setup + monthly: $900 setup + $249/mo for booking funnel pages, local SEO updates, offer testing, and monthly optimization.
+
+If helpful, I can send the booking page link and a screenshot so you can review it in 30 seconds.
+
+Want me to send the booking page link and a screenshot?
+
+If you'd prefer not to hear from me again, reply with unsubscribe.

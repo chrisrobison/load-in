@@ -2,14 +2,15 @@
 
 ## Goal
 
-Turn the current venue audit MVP into an end-to-end autonomous venue business platform with persistent dossiers, outbound outreach, payment handling, and automated delivery.
+Turn the current venue audit MVP into an end-to-end autonomous local-business platform with persistent dossiers, outbound outreach, payment handling, and automated delivery.
 
 ## Current Architecture
 
 - Node.js + TypeScript + Express server
 - File-based outputs in `out/`
 - Scout, Auditor, Builder, Analyst, Closer pipeline
-- Dashboard with launch controls for venue and city audits
+- Dashboard with launch controls for single-business and city-wide audits
+- Vertical adapters for `event_venue`, `salon`, and `restaurant`
 
 ## Target Architecture
 
@@ -17,11 +18,12 @@ Turn the current venue audit MVP into an end-to-end autonomous venue business pl
 - `out/` preserved as deliverable artifact storage
 - Every pipeline stage recorded in `stage_events`
 - DB-backed jobs, venues, contacts, outreach threads, billing, and deliveries
+- Vertical-aware scouting, auditing, fix-pack generation, and outreach copy
 - SMTP outbound sending, IMAP inbox polling, Stripe Checkout, and delivery portal
 
 ## Schema Decisions
 
-- `venues` stores canonical venue identity and lifecycle state
+- `venues` stores canonical business identity, lifecycle state, and vertical
 - `venue_profiles` stores crawl/audit snapshots
 - `audit_runs` stores audit outcomes and qualification result
 - `stage_events` is the append-only per-venue dossier ledger
@@ -65,6 +67,7 @@ Primary groups:
 - [x] IMAP reply ingestion scaffolding
 - [x] Stripe Checkout integration scaffolding
 - [x] Delivery portal and ZIP handoff scaffolding
+- [x] Vertical adapter system for venues, salons, and restaurants
 
 ## Change Log
 
@@ -75,3 +78,4 @@ Primary groups:
 - Added SQLite schema, repositories, stage-event dossier persistence, and DB-backed server APIs
 - Added contact resolution, qualification rules, SMTP/IMAP service scaffolding, Stripe Checkout scaffolding, and delivery packaging
 - Added dossier-aware dashboard views for contacts, threads, billing, and timeline data
+- Refactored the audit pipeline behind vertical adapters and added salon and restaurant support

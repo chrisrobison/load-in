@@ -1,14 +1,16 @@
 import path from "node:path";
 import { readJsonFile } from "../utils/fs.js";
 import { cleanWhitespace, toTitleCase } from "../utils/text.js";
-import type { VenueCandidate } from "../types.js";
+import type { VenueCandidate, VerticalId } from "../types.js";
 import { fetchPage } from "../utils/http.js";
+import { getVerticalAdapter, inferVertical } from "../verticals/index.js";
 
 interface SeedVenue {
   name: string;
   city: string;
   category: string;
   url: string;
+  vertical?: VerticalId;
 }
 
 export interface ScoutInput {
@@ -16,6 +18,7 @@ export interface ScoutInput {
   category?: string;
   name?: string;
   url?: string;
+  vertical?: VerticalId;
   limit?: number;
 }
 
@@ -23,11 +26,17 @@ export class Scout {
   private readonly seedsPath = path.resolve(process.cwd(), "seeds.json");
 
   async run(input: ScoutInput): Promise<VenueCandidate[]> {
+    const vertical = input.vertical ?? inferVertical(input.category);
+    const adapter = getVerticalAdapter(vertical);
+    const category = input.category ?? adapter.defaultCategory;
+
     if (input.url) {
       return [
         {
           name: this.deriveNameFromUrl(input.url),
           url: input.url,
+          category,
+          vertical,
           source: "direct"
         }
       ];
@@ -38,18 +47,20 @@ export class Scout {
       const exactSeed = seeds.find((seed) => {
         const sameName = seed.name.toLowerCase().includes(input.name!.toLowerCase());
         const sameCity = input.city ? seed.city.toLowerCase().includes(input.city.toLowerCase()) : true;
-        return sameName && sameCity;
+        const sameVertical = seed.vertical ? seed.vertical === vertical : true;
+        return sameName && sameCity && sameVertical;
       });
 
       if (exactSeed) {
-        return [{ ...exactSeed, source: "seed" as const }];
+        return [{ ...exactSeed, category: exactSeed.category ?? category, vertical: exactSeed.vertical ?? vertical, source: "seed" as const }];
       }
 
       const namedCandidate = await this.searchQuery(
-        [input.name, input.city, input.category, "official site"].filter(Boolean).join(" "),
+        [input.name, input.city, category, ...adapter.scoutKeywords.slice(0, 1), "official site"].filter(Boolean).join(" "),
         1,
         input.city,
-        input.category
+        category,
+        vertical
       );
       if (namedCandidate.length > 0) {
         return namedCandidate;
@@ -60,21 +71,22 @@ export class Scout {
     const filteredSeeds = seeds.filter((seed) => {
       const nameMatch = input.name ? seed.name.toLowerCase().includes(input.name.toLowerCase()) : true;
       const cityMatch = input.city ? seed.city.toLowerCase().includes(input.city.toLowerCase()) : true;
-      const categoryMatch = input.category ? seed.category.toLowerCase().includes(input.category.toLowerCase()) : true;
-      return nameMatch && cityMatch && categoryMatch;
+      const categoryMatch = category ? seed.category.toLowerCase().includes(category.toLowerCase()) : true;
+      const verticalMatch = seed.vertical ? seed.vertical === vertical : vertical === inferVertical(seed.category);
+      return nameMatch && cityMatch && categoryMatch && verticalMatch;
     });
 
-    const searchCandidates = input.city && input.category
-      ? await this.searchQuery(`${input.city} ${input.category} official site`, input.limit ?? 5, input.city, input.category)
+    const searchCandidates = input.city && category
+      ? await this.searchQuery(`${input.city} ${category} ${adapter.scoutKeywords[0]} official site`, input.limit ?? 5, input.city, category, vertical)
       : [];
 
     const merged = new Map<string, VenueCandidate>();
-    for (const venue of filteredSeeds.map((seed) => ({ ...seed, source: "seed" as const }))) {
+    for (const venue of filteredSeeds.map((seed) => ({ ...seed, vertical: seed.vertical ?? inferVertical(seed.category), source: "seed" as const }))) {
       merged.set(venue.url, venue);
     }
 
     for (const venue of searchCandidates) {
-      if (!merged.has(venue.url) && this.isUsefulSearchCandidate(venue, input.city, input.category)) {
+      if (!merged.has(venue.url) && this.isUsefulSearchCandidate(venue, input.city, category)) {
         merged.set(venue.url, venue);
       }
     }
@@ -82,7 +94,7 @@ export class Scout {
     return Array.from(merged.values()).slice(0, input.limit ?? 5);
   }
 
-  private async searchQuery(queryText: string, limit: number, city?: string, category?: string): Promise<VenueCandidate[]> {
+  private async searchQuery(queryText: string, limit: number, city?: string, category?: string, vertical?: VerticalId): Promise<VenueCandidate[]> {
     try {
       const query = encodeURIComponent(queryText);
       const response = await fetchPage(`https://duckduckgo.com/html/?q=${query}`, 10000);
@@ -98,6 +110,7 @@ export class Scout {
           url,
           city,
           category,
+          vertical,
           source: "search" as const
         };
       }).filter((item) => item.url.startsWith("http")).slice(0, limit);

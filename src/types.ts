@@ -5,6 +5,8 @@ export type LeakCategory =
   | "fill_rate"
   | "revenue";
 
+export type VerticalId = "event_venue" | "salon" | "restaurant";
+
 export type VenueStatus =
   | "discovered"
   | "audited"
@@ -33,6 +35,7 @@ export interface VenueCandidate {
   url: string;
   city?: string;
   category?: string;
+  vertical?: VerticalId;
   source: "seed" | "search" | "direct";
   discoveryConfidence?: number;
   discoveryNotes?: string[];
@@ -51,6 +54,7 @@ export interface VenueProfile {
   finalUrl: string;
   city?: string;
   category?: string;
+  vertical: VerticalId;
   title?: string;
   metaDescription?: string;
   h1?: string;
@@ -66,11 +70,20 @@ export interface VenueProfile {
   hasArtistSubmission: boolean;
   hasNewsletter: boolean;
   hasEventSchema: boolean;
+  hasOnlineBooking: boolean;
+  hasServiceMenu: boolean;
+  hasTeamPage: boolean;
+  hasReviews: boolean;
+  hasReservations: boolean;
+  hasOrderingLink: boolean;
+  hasPrivateDining: boolean;
+  hasMenuPage: boolean;
   imageCount: number;
   totalImageBytes: number;
   estimatedPageWeight: number;
   wordCount: number;
   genres: string[];
+  keywords: string[];
   eventCandidates: EventCandidate[];
   rawTextSample: string;
   notes: string[];
@@ -239,6 +252,7 @@ export interface VenueRecord {
   canonicalUrl?: string;
   city?: string;
   category?: string;
+  vertical?: VerticalId;
   status: VenueStatus;
   createdAt: string;
   updatedAt: string;
@@ -295,6 +309,7 @@ export interface VenueSummary {
   status: VenueStatus;
   score?: number;
   city?: string;
+  vertical?: VerticalId;
   topLeaks: string[];
   latestAuditRunId?: string;
 }

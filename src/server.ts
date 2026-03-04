@@ -6,6 +6,7 @@ import { Pipeline } from "./pipeline.js";
 import { Reconnaissance } from "./agents/reconnaissance.js";
 import type { ScoutInput, Scout } from "./agents/scout.js";
 import type { JobRecord, VenueCandidate } from "./types.js";
+import { getVerticalAdapter, inferVertical, listVerticalAdapters } from "./verticals/index.js";
 
 function normalizeLaunchInput(body: Record<string, unknown>): ScoutInput {
   const asString = (value: unknown): string | undefined => {
@@ -17,6 +18,7 @@ function normalizeLaunchInput(body: Record<string, unknown>): ScoutInput {
     name: asString(body.name),
     city: asString(body.city),
     category: asString(body.category),
+    vertical: asString(body.vertical) as ScoutInput["vertical"],
     limit: Number.isFinite(limitValue) && limitValue > 0 ? limitValue : undefined
   };
 }
@@ -62,6 +64,7 @@ async function main(): Promise<void> {
               canonicalUrl: venue.canonicalUrl,
               city: venue.city,
               category: venue.category,
+              vertical: venue.vertical,
               status: "paid"
             });
           }
@@ -90,6 +93,14 @@ async function main(): Promise<void> {
     res.json(venueRepository.listVenueSummaries());
   });
 
+  app.get("/api/verticals", (_req, res) => {
+    res.json(listVerticalAdapters().map((adapter) => ({
+      id: adapter.id,
+      label: adapter.label,
+      defaultCategory: adapter.defaultCategory
+    })));
+  });
+
   app.get("/api/venues/:id", async (req, res) => {
     const dossier = venueRepository.getVenueDossier(req.params.id);
     if (!dossier) {
@@ -98,7 +109,7 @@ async function main(): Promise<void> {
     }
 
     const report = dossier.latestReportPath ? await dossierService.readTextIfExists(dossier.latestReportPath) : undefined;
-    const latestEmail = dossier.messages.find((message) => message.direction === "outbound" && (message.subject ?? "").toLowerCase().includes("quick revenue fixes"));
+    const latestEmail = await dossierService.readTextIfExists(path.resolve(process.cwd(), "out", dossier.venue.slug, "outreach_email.txt"));
     const latestDm = await dossierService.readTextIfExists(path.resolve(process.cwd(), "out", dossier.venue.slug, "outreach_dm.txt"));
     res.json({
       venue: dossier.venue,
@@ -108,7 +119,7 @@ async function main(): Promise<void> {
       qualification: dossier.latestQualification,
       report,
       outreach: {
-        email: latestEmail?.bodyText,
+        email: latestEmail,
         dm: latestDm
       },
       assets: dossier.assets.map((asset) => ({
@@ -147,33 +158,16 @@ async function main(): Promise<void> {
 
   app.post("/api/reconnaissance", async (req, res) => {
     const input = normalizeLaunchInput(req.body as Record<string, unknown>);
+    input.vertical = input.vertical ?? inferVertical(input.category);
+    input.category = input.category ?? getVerticalAdapter(input.vertical).defaultCategory;
     if (!input.city || !input.category) {
-      res.status(400).json({ error: "Provide city and category for reconnaissance." });
+      res.status(400).json({ error: "Provide city and category, or choose a vertical for reconnaissance." });
       return;
     }
-    try {
-      const candidates = await reconnaissance.run({ city: input.city, category: input.category, limit: input.limit ?? 8 });
-      for (const candidate of candidates) {
-        const venue = venueRepository.upsertVenue({
-          slug: slugFromCandidate(candidate),
-          name: candidate.name,
-          canonicalUrl: candidate.url,
-          city: candidate.city,
-          category: candidate.category,
-          status: "discovered"
-        });
-        dossierRepository.append({
-          venueId: venue.id,
-          stage: "reconnaissance",
-          eventType: "candidate_found",
-          decision: candidate.source,
-          details: candidate
-        });
-      }
-      res.json({ candidates, count: candidates.length });
-    } catch (error) {
-      res.status(500).json({ error: error instanceof Error ? error.message : "Reconnaissance failed" });
-    }
+    const label = `Reconnaissance: ${input.city} ${input.category}`.trim();
+    const job = jobRepository.create("reconnaissance", label, input);
+    res.status(202).json(deserializeJob(job));
+    void runReconJob(job.id, input);
   });
 
   app.get("/api/jobs", (_req, res) => {
@@ -187,6 +181,21 @@ async function main(): Promise<void> {
       return;
     }
     res.json(deserializeJob(job));
+  });
+
+  app.get("/api/jobs/:id/activity", (req, res) => {
+    const job = jobRepository.get(req.params.id);
+    if (!job) {
+      res.status(404).json({ error: "Job not found" });
+      return;
+    }
+    res.json({
+      job: deserializeJob(job),
+      events: dossierRepository.listByJobId(job.id).map((event) => ({
+        ...event,
+        details: safeParse(event.detailsJson)
+      }))
+    });
   });
 
   app.post("/api/jobs/:id/retry", async (req, res) => {
@@ -203,10 +212,12 @@ async function main(): Promise<void> {
 
   app.post("/api/audits", async (req, res) => {
     const input = normalizeLaunchInput(req.body as Record<string, unknown>);
+    input.vertical = input.vertical ?? inferVertical(input.category);
+    input.category = input.category ?? getVerticalAdapter(input.vertical).defaultCategory;
     const hasSingleVenueInput = Boolean(input.url || input.name);
-    const hasBatchInput = Boolean(input.city && input.category);
+    const hasBatchInput = !hasSingleVenueInput && Boolean(input.city && input.category);
     if (!hasSingleVenueInput && !hasBatchInput) {
-      res.status(400).json({ error: "Provide a venue url/name or a city + category." });
+      res.status(400).json({ error: "Provide a business url/name or a city plus category or vertical." });
       return;
     }
     const label = hasBatchInput
@@ -257,6 +268,7 @@ async function main(): Promise<void> {
         canonicalUrl: venue.canonicalUrl,
         city: venue.city,
         category: venue.category,
+        vertical: venue.vertical,
         status: "paid"
       });
     }
@@ -341,8 +353,8 @@ async function main(): Promise<void> {
     jobRepository.update(jobId, { status: "running", result: { stage: "reconnaissance" } });
     try {
       let candidates: VenueCandidate[] | undefined;
-      if (input.city && input.category) {
-        candidates = await reconnaissance.run({ city: input.city, category: input.category, limit: input.limit ?? 8 });
+      if (!input.url && !input.name && input.city && input.category) {
+        candidates = await reconnaissance.run({ city: input.city, category: input.category, vertical: input.vertical, limit: input.limit ?? 8 });
         jobRepository.update(jobId, { status: "running", result: { stage: "audit", candidateCount: candidates.length, candidates } });
       }
 
@@ -360,6 +372,45 @@ async function main(): Promise<void> {
       });
     } catch (error) {
       jobRepository.update(jobId, { status: "failed", error: error instanceof Error ? error.message : "Audit failed" });
+    }
+  }
+
+  async function runReconJob(jobId: string, input: ScoutInput): Promise<void> {
+    jobRepository.update(jobId, { status: "running", result: { stage: "reconnaissance" } });
+    try {
+      const candidates = await reconnaissance.run({ city: input.city, category: input.category, vertical: input.vertical, limit: input.limit ?? 8 });
+      for (const candidate of candidates) {
+        const venue = venueRepository.upsertVenue({
+          slug: slugFromCandidate(candidate),
+          name: candidate.name,
+          canonicalUrl: candidate.url,
+          city: candidate.city,
+          category: candidate.category,
+          vertical: candidate.vertical,
+          status: "discovered"
+        });
+        dossierRepository.append({
+          venueId: venue.id,
+          jobId,
+          stage: "reconnaissance",
+          eventType: "candidate_found",
+          decision: candidate.source,
+          details: candidate
+        });
+      }
+      jobRepository.update(jobId, {
+        status: "completed",
+        result: {
+          stage: "completed",
+          candidateCount: candidates.length,
+          candidates
+        }
+      });
+    } catch (error) {
+      jobRepository.update(jobId, {
+        status: "failed",
+        error: error instanceof Error ? error.message : "Reconnaissance failed"
+      });
     }
   }
 }

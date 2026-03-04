@@ -20,22 +20,52 @@ import { parseJson, toSqlBool } from "./shared.js";
 export class VenueRepository {
   constructor(private readonly db: Database.Database) {}
 
-  upsertVenue(input: { slug: string; name: string; canonicalUrl?: string; city?: string; category?: string; status: VenueStatus }): VenueRecord {
+  findByCanonicalUrlOrName(input: { canonicalUrl?: string; name: string; city?: string; vertical?: VenueRecord["vertical"] }): VenueRecord | undefined {
+    if (input.canonicalUrl) {
+      const byUrl = this.db.prepare(`
+        SELECT id, slug, name, canonical_url as canonicalUrl, city, category, vertical, status, created_at as createdAt, updated_at as updatedAt
+        FROM venues
+        WHERE canonical_url = ?
+        LIMIT 1
+      `).get(input.canonicalUrl) as VenueRecord | undefined;
+      if (byUrl) {
+        return byUrl;
+      }
+    }
+
+    return this.db.prepare(`
+      SELECT id, slug, name, canonical_url as canonicalUrl, city, category, vertical, status, created_at as createdAt, updated_at as updatedAt
+      FROM venues
+      WHERE lower(name) = lower(?)
+        AND coalesce(city, '') = coalesce(?, '')
+        AND coalesce(vertical, '') IN ('', coalesce(?, ''))
+      LIMIT 1
+    `).get(input.name, input.city ?? null, input.vertical ?? null) as VenueRecord | undefined;
+  }
+
+  upsertVenue(input: { slug: string; name: string; canonicalUrl?: string; city?: string; category?: string; vertical?: VenueRecord["vertical"]; status: VenueStatus }): VenueRecord {
     const now = new Date().toISOString();
-    const existing = this.db.prepare("SELECT * FROM venues WHERE slug = ?").get(input.slug) as VenueRecord | undefined;
+    const existing = this.findByCanonicalUrlOrName({
+      canonicalUrl: input.canonicalUrl,
+      name: input.name,
+      city: input.city,
+      vertical: input.vertical
+    }) ?? this.db.prepare("SELECT * FROM venues WHERE slug = ?").get(input.slug) as VenueRecord | undefined;
     if (existing) {
+      const mergedStatus = pickVenueStatus(existing.status, input.status);
       this.db.prepare(`
         UPDATE venues
-        SET name = ?, canonical_url = ?, city = ?, category = ?, status = ?, updated_at = ?
+        SET name = ?, canonical_url = ?, city = ?, category = ?, vertical = ?, status = ?, updated_at = ?
         WHERE id = ?
-      `).run(input.name, input.canonicalUrl ?? null, input.city ?? null, input.category ?? null, input.status, now, existing.id);
+      `).run(input.name, input.canonicalUrl ?? null, input.city ?? null, input.category ?? null, input.vertical ?? existing.vertical ?? null, mergedStatus, now, existing.id);
       return {
         ...existing,
         name: input.name,
         canonicalUrl: input.canonicalUrl,
         city: input.city,
         category: input.category,
-        status: input.status,
+        vertical: input.vertical ?? existing.vertical,
+        status: mergedStatus,
         updatedAt: now
       };
     }
@@ -47,20 +77,21 @@ export class VenueRepository {
       canonicalUrl: input.canonicalUrl,
       city: input.city,
       category: input.category,
+      vertical: input.vertical,
       status: input.status,
       createdAt: now,
       updatedAt: now
     };
     this.db.prepare(`
-      INSERT INTO venues (id, slug, name, canonical_url, city, category, status, created_at, updated_at)
-      VALUES (@id, @slug, @name, @canonicalUrl, @city, @category, @status, @createdAt, @updatedAt)
+      INSERT INTO venues (id, slug, name, canonical_url, city, category, vertical, status, created_at, updated_at)
+      VALUES (@id, @slug, @name, @canonicalUrl, @city, @category, @vertical, @status, @createdAt, @updatedAt)
     `).run(record);
     return record;
   }
 
   getVenueByIdOrSlug(idOrSlug: string): VenueRecord | undefined {
     const row = this.db.prepare(`
-      SELECT id, slug, name, canonical_url as canonicalUrl, city, category, status, created_at as createdAt, updated_at as updatedAt
+      SELECT id, slug, name, canonical_url as canonicalUrl, city, category, vertical, status, created_at as createdAt, updated_at as updatedAt
       FROM venues WHERE id = ? OR slug = ? LIMIT 1
     `).get(idOrSlug, idOrSlug) as VenueRecord | undefined;
     return row;
@@ -211,29 +242,54 @@ export class VenueRepository {
         v.name,
         v.status,
         v.city,
+        v.vertical,
         ar.score,
         ar.id AS latestAuditRunId,
+        ar.qualification_reason as qualificationReason,
         ar.audit_json AS auditJson
       FROM venues v
       LEFT JOIN audit_runs ar ON ar.id = (
         SELECT id FROM audit_runs WHERE venue_id = v.id ORDER BY created_at DESC LIMIT 1
       )
       ORDER BY v.updated_at DESC
-    `).all() as Array<{ id: string; slug: string; name: string; status: VenueStatus; city?: string; score?: number; latestAuditRunId?: string; auditJson?: string }>;
+    `).all() as Array<{ id: string; slug: string; name: string; status: VenueStatus; city?: string; vertical?: VenueRecord["vertical"]; score?: number; latestAuditRunId?: string; qualificationReason?: string; auditJson?: string }>;
 
-    return rows.map((row) => {
+    const summaries = rows.map((row) => {
       const audit = parseJson<AuditResult | null>(row.auditJson, null);
+      const effectiveStatus = row.status === "discovered" && row.qualificationReason
+        ? row.qualificationReason.startsWith("qualified")
+          ? "qualified"
+          : "disqualified"
+        : row.status;
       return {
         id: row.id,
         slug: row.slug,
         name: row.name,
-        status: row.status,
+        status: effectiveStatus,
         city: row.city,
+        vertical: row.vertical,
         score: row.score,
         latestAuditRunId: row.latestAuditRunId,
         topLeaks: audit?.topLeaks?.slice(0, 3).map((leak) => leak.title) ?? []
       };
     });
+
+    const deduped = new Map<string, VenueSummary>();
+    for (const summary of summaries) {
+      const key = `${summary.name.toLowerCase()}::${summary.city?.toLowerCase() ?? ""}`;
+      const existing = deduped.get(key);
+      if (!existing) {
+        deduped.set(key, summary);
+        continue;
+      }
+      const existingScore = existing.score ?? -1;
+      const nextScore = summary.score ?? -1;
+      if (nextScore > existingScore || (nextScore === existingScore && existing.status === "discovered" && summary.status !== "discovered")) {
+        deduped.set(key, summary);
+      }
+    }
+
+    return Array.from(deduped.values());
   }
 
   getVenueDossier(venueIdOrSlug: string): VenueDossier | undefined {
@@ -327,4 +383,21 @@ export class VenueRepository {
       stageEvents
     };
   }
+}
+
+function pickVenueStatus(existing: VenueStatus, incoming: VenueStatus): VenueStatus {
+  const rank: Record<VenueStatus, number> = {
+    discovered: 0,
+    audited: 1,
+    qualified: 2,
+    disqualified: 2,
+    contacted: 3,
+    replied: 4,
+    interested: 5,
+    checkout_sent: 6,
+    paid: 7,
+    fulfilled: 8,
+    closed_lost: 8
+  };
+  return rank[incoming] >= rank[existing] ? incoming : existing;
 }

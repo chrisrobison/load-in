@@ -38,6 +38,7 @@ export class Pipeline {
       canonicalUrl: candidate.url,
       city: candidate.city ?? input.city,
       category: candidate.category ?? input.category,
+      vertical: candidate.vertical ?? input.vertical,
       status: "discovered"
     });
 
@@ -57,6 +58,7 @@ export class Pipeline {
       canonicalUrl: audit.venue.finalUrl,
       city: audit.venue.city ?? candidate.city ?? input.city,
       category: audit.venue.category ?? candidate.category ?? input.category,
+      vertical: audit.venue.vertical,
       status: "audited"
     });
     const venue = venueRepository.getVenueByIdOrSlug(audit.venue.slug) ?? discoveredVenue;
@@ -126,6 +128,7 @@ export class Pipeline {
       canonicalUrl: audit.venue.finalUrl,
       city: audit.venue.city ?? candidate.city ?? input.city,
       category: audit.venue.category ?? candidate.category ?? input.category,
+      vertical: audit.venue.vertical,
       status: qualification.qualified ? "qualified" : "disqualified"
     });
     dossierRepository.append({
@@ -238,6 +241,7 @@ export class Pipeline {
           canonicalUrl: audit.venue.finalUrl,
           city: audit.venue.city ?? candidate.city ?? input.city,
           category: audit.venue.category ?? candidate.category ?? input.category,
+          vertical: audit.venue.vertical,
           status: "contacted"
         });
         dossierRepository.append({

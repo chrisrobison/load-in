@@ -3,48 +3,98 @@
     "name": "The Independent",
     "city": "San Francisco",
     "category": "music venue",
-    "url": "https://www.theindependentsf.com/"
+    "url": "https://www.theindependentsf.com/",
+    "vertical": "event_venue"
   },
   {
     "name": "Bottom of the Hill",
     "city": "San Francisco",
     "category": "music venue",
-    "url": "https://bottomofthehill.com/"
+    "url": "https://bottomofthehill.com/",
+    "vertical": "event_venue"
   },
   {
     "name": "Rickshaw Stop",
     "city": "San Francisco",
     "category": "music venue",
-    "url": "https://rickshawstop.com/"
+    "url": "https://rickshawstop.com/",
+    "vertical": "event_venue"
   },
   {
     "name": "The Chapel",
     "city": "San Francisco",
     "category": "music venue",
-    "url": "https://thechapelsf.com/"
+    "url": "https://thechapelsf.com/",
+    "vertical": "event_venue"
   },
   {
     "name": "Neck of the Woods",
     "city": "San Francisco",
     "category": "music venue",
-    "url": "https://www.neckofthewoodssf.com/"
+    "url": "https://www.neckofthewoodssf.com/",
+    "vertical": "event_venue"
   },
   {
     "name": "Mohawk Austin",
     "city": "Austin",
     "category": "music venue",
-    "url": "https://mohawkaustin.com/"
+    "url": "https://mohawkaustin.com/",
+    "vertical": "event_venue"
   },
   {
     "name": "The Crocodile",
     "city": "Seattle",
     "category": "music venue",
-    "url": "https://www.thecrocodile.com/"
+    "url": "https://www.thecrocodile.com/",
+    "vertical": "event_venue"
   },
   {
     "name": "Metro Chicago",
     "city": "Chicago",
     "category": "music venue",
-    "url": "https://metrochicago.com/"
+    "url": "https://metrochicago.com/",
+    "vertical": "event_venue"
+  },
+  {
+    "name": "Spoke & Weal",
+    "city": "San Francisco",
+    "category": "hair salon",
+    "url": "https://www.spokeandweal.com/",
+    "vertical": "salon"
+  },
+  {
+    "name": "Cinta Salon",
+    "city": "San Francisco",
+    "category": "hair salon",
+    "url": "https://www.cintasalon.com/",
+    "vertical": "salon"
+  },
+  {
+    "name": "Drybar",
+    "city": "San Francisco",
+    "category": "hair salon",
+    "url": "https://www.drybarshops.com/",
+    "vertical": "salon"
+  },
+  {
+    "name": "Zuni Cafe",
+    "city": "San Francisco",
+    "category": "restaurant",
+    "url": "https://zunicafe.com/",
+    "vertical": "restaurant"
+  },
+  {
+    "name": "Nopa",
+    "city": "San Francisco",
+    "category": "restaurant",
+    "url": "https://www.nopasf.com/",
+    "vertical": "restaurant"
+  },
+  {
+    "name": "Foreign Cinema",
+    "city": "San Francisco",
+    "category": "restaurant",
+    "url": "https://foreigncinema.com/",
+    "vertical": "restaurant"
   }
 ]

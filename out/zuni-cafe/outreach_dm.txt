@@ -1,0 +1,1 @@
+Ran a quick audit on Zuni Cafe and spotted no clear direct ordering path. I already mocked up reservation landing page, private dining inquiry page, SEO quick-fix bundle. Want me to send the page link and a screenshot?

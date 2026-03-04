@@ -1,0 +1,16 @@
+{
+  "@context": "https://schema.org",
+  "@type": "Event",
+  "name": "About Zuni Café opened in San Francisco, California on , 1979. Zuni Café won the",
+  "startDate": "February 15",
+  "location": {
+    "@type": "Restaurant",
+    "name": "Zuni Cafe",
+    "address": "1658 Market Street San Francisco, CA 94102"
+  },
+  "offers": {
+    "@type": "Offer",
+    "url": "http://zunicafe.com/history/",
+    "availability": "https://schema.org/InStock"
+  }
+}
